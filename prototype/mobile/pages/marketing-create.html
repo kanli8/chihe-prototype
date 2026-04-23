@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建活动 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .form-section { padding: 15px; }
+        .form-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .form-card h3 { font-size: 1rem; margin-bottom: 15px; }
+        .form-row {
+            margin-bottom: 15px;
+        }
+        .form-row:last-child { margin-bottom: 0; }
+        .form-label { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; display: block; }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .form-input:focus { border-color: #f59e0b; }
+        textarea.form-input { resize: none; min-height: 100px; }
+
+        .template-preview {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+        .template-option {
+            min-width: 100px;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .template-option.active { border-color: #f59e0b; background: rgba(245, 158, 11, 0.05); }
+        .template-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .template-name { font-size: 0.8rem; }
+
+        .field-list { }
+        .field-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .field-item:last-child { border-bottom: none; }
+        .field-item input[type="checkbox"] { margin-right: 10px; }
+        .field-name { flex: 1; font-size: 0.9rem; }
+        .field-required { font-size: 0.75rem; color: #ef4444; }
+
+        .action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 12px 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        .btn-preview {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+        <a href="marketing.html" class="header-back">‹</a>
+        <h1>创建活动</h1>
+        <span></span>
+    </header>
+
+    <div class="form-section">
+        <div class="form-card">
+            <h3>📋 基本信息</h3>
+            <div class="form-row">
+                <label class="form-label">活动名称</label>
+                <input type="text" class="form-input" placeholder="例如：春季口腔健康义诊活动">
+            </div>
+            <div class="form-row">
+                <label class="form-label">活动描述</label>
+                <textarea class="form-input" placeholder="简要描述活动内容..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>🎨 选择模板</h3>
+            <div class="template-preview">
+                <div class="template-option active">
+                    <div class="template-thumb" style="background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);">🎁</div>
+                    <div class="template-name">义诊活动</div>
+                </div>
+                <div class="template-option">
+                    <div class="template-thumb" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);">📚</div>
+                    <div class="template-name">健康讲座</div>
+                </div>
+                <div class="template-option">
+                    <div class="template-thumb" style="background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);">💰</div>
+                    <div class="template-name">优惠活动</div>
+                </div>
+                <div class="template-option">
+                    <div class="template-thumb" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">🎯</div>
+                    <div class="template-name">预约体验</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>📝 表单字段</h3>
+            <div class="field-list">
+                <div class="field-item">
+                    <input type="checkbox" checked disabled>
+                    <span class="field-name">姓名</span>
+                    <span class="field-required">必填</span>
+                </div>
+                <div class="field-item">
+                    <input type="checkbox" checked disabled>
+                    <span class="field-name">手机号</span>
+                    <span class="field-required">必填</span>
+                </div>
+                <div class="field-item">
+                    <input type="checkbox" checked>
+                    <span class="field-name">年龄</span>
+                </div>
+                <div class="field-item">
+                    <input type="checkbox" checked>
+                    <span class="field-name">牙齿问题</span>
+                </div>
+                <div class="field-item">
+                    <input type="checkbox">
+                    <span class="field-name">预约时间</span>
+                </div>
+                <div class="field-item">
+                    <input type="checkbox">
+                    <span class="field-name">备注留言</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>📅 活动时间</h3>
+            <div class="form-row">
+                <label class="form-label">开始日期</label>
+                <input type="date" class="form-input" value="2026-04-23">
+            </div>
+            <div class="form-row">
+                <label class="form-label">结束日期</label>
+                <input type="date" class="form-input" value="2026-05-23">
+            </div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <button class="btn-preview" onclick="alert('预览活动页面')">预览并发布</button>
+    </div>
+</body>
+</html>

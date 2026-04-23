@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        /* 顶部欢迎区 */
+        .welcome-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            padding: 20px 15px 80px;
+        }
+        .welcome-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-info .avatar {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.2);
+            font-size: 1.2rem;
+        }
+        .user-info .name { font-weight: 600; font-size: 1.1rem; }
+        .user-info .role {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .top-actions { display: flex; gap: 15px; }
+        .top-actions span { font-size: 1.4rem; cursor: pointer; }
+
+        .welcome-content h2 { font-size: 1.3rem; margin-bottom: 5px; }
+        .welcome-content p { font-size: 0.9rem; opacity: 0.9; }
+
+        /* 身份切换卡片 */
+        .identity-card {
+            background: #fff;
+            margin: -50px 15px 15px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .identity-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .identity-left { display: flex; align-items: center; gap: 12px; }
+        .identity-left .icon { font-size: 2.5rem; }
+        .identity-left .info .title { font-weight: 600; font-size: 1.05rem; }
+        .identity-left .info .desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 3px; }
+        .identity-btn {
+            padding: 8px 15px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            cursor: pointer;
+            border: none;
+        }
+
+        /* 快捷入口 */
+        .quick-entry {
+            padding: 15px;
+        }
+        .quick-entry h3 { font-size: 1rem; margin-bottom: 15px; color: var(--text-primary); }
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .quick-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .quick-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        .quick-item span { font-size: 0.85rem; }
+
+        /* 模块列表 */
+        .module-section {
+            padding: 0 15px 15px;
+        }
+        .module-section h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .module-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .module-card:active { transform: scale(0.98); }
+        .module-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        .module-info { flex: 1; }
+        .module-info h4 { font-size: 1rem; font-weight: 600; margin-bottom: 3px; }
+        .module-info p { font-size: 0.85rem; color: var(--text-secondary); }
+        .module-arrow { color: var(--text-muted); font-size: 1.2rem; }
+
+        /* AI 助手入口 */
+        .ai-section {
+            padding: 15px;
+        }
+        .ai-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .ai-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-radius: 15px;
+            padding: 20px 15px;
+            cursor: pointer;
+        }
+        .ai-card.second { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .ai-card .ai-icon { font-size: 2rem; margin-bottom: 10px; }
+        .ai-card h4 { font-size: 1rem; margin-bottom: 5px; }
+        .ai-card p { font-size: 0.8rem; opacity: 0.9; }
+
+        /* 待办事项 */
+        .todo-section { padding: 0 15px 15px; }
+        .todo-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .todo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .todo-header h4 { font-size: 0.95rem; }
+        .todo-header a { color: var(--primary); font-size: 0.85rem; text-decoration: none; }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .todo-item:last-child { border-bottom: none; }
+        .todo-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 10px;
+        }
+        .todo-dot.warning { background: var(--warning); }
+        .todo-dot.danger { background: var(--danger); }
+        .todo-text { flex: 1; font-size: 0.9rem; }
+        .todo-count { color: var(--text-muted); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="welcome-header">
+        <div class="welcome-top">
+            <div class="user-info">
+                <div class="avatar">🏥</div>
+                <div>
+                    <div class="name" id="userName">口腔门诊</div>
+                    <div class="role">
+                        <span class="tag tag-warning">管理者</span>
+                    </div>
+                </div>
+            </div>
+            <div class="top-actions">
+                <span onclick="location.href='profile.html'">👤</span>
+                <span>🔔</span>
+            </div>
+        </div>
+        <div class="welcome-content">
+            <h2>您好，欢迎回来！</h2>
+            <p>今天有 3 条待跟进线索，2 个面试邀约</p>
+        </div>
+    </div>
+
+    <div class="identity-card">
+        <div class="identity-toggle">
+            <div class="identity-left">
+                <span class="icon">🔄</span>
+                <div class="info">
+                    <div class="title">切换身份</div>
+                    <div class="desc">门诊 / 个人</div>
+                </div>
+            </div>
+            <button class="identity-btn" onclick="location.href='identity-switch.html'">立即切换</button>
+        </div>
+    </div>
+
+    <div class="quick-entry">
+        <h3>快捷入口</h3>
+        <div class="quick-grid">
+            <a href="pages/talent-post.html" class="quick-item">
+                <div class="quick-icon" style="background: rgba(16, 185, 129, 0.1);">📝</div>
+                <span>发布职位</span>
+            </a>
+            <a href="pages/training.html" class="quick-item">
+                <div class="quick-icon" style="background: rgba(59, 130, 246, 0.1);">📚</div>
+                <span>学习课程</span>
+            </a>
+            <a href="pages/expert.html" class="quick-item">
+                <div class="quick-icon" style="background: rgba(245, 158, 11, 0.1);">👨‍⚕️</div>
+                <span>预约专家</span>
+            </a>
+            <a href="pages/ai-xiaochi.html" class="quick-item">
+                <div class="quick-icon" style="background: rgba(139, 92, 246, 0.1);">🤖</div>
+                <span>AI小齿</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>📦 六大核心模块</h3>
+
+        <div class="module-card" onclick="location.href='pages/talent.html'">
+            <div class="module-icon" style="background: rgba(16, 185, 129, 0.1);">👥</div>
+            <div class="module-info">
+                <h4>人才市场</h4>
+                <p>招聘人才 · 求职找工作</p>
+            </div>
+            <span class="module-arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/training.html'">
+            <div class="module-icon" style="background: rgba(59, 130, 246, 0.1);">🎓</div>
+            <div class="module-info">
+                <h4>培训学院</h4>
+                <p>医疗技术 · 经营管理 · 合规培训</p>
+            </div>
+            <span class="module-arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/marketing.html'">
+            <div class="module-icon" style="background: rgba(245, 158, 11, 0.1);">📣</div>
+            <div class="module-info">
+                <h4>智能获客</h4>
+                <p>营销活动 · 线索收集 · 获客工具</p>
+            </div>
+            <span class="module-arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/supply.html'">
+            <div class="module-icon" style="background: rgba(236, 72, 153, 0.1);">🛒</div>
+            <div class="module-info">
+                <h4>供应链集采</h4>
+                <p>器械耗材 · 设备采购 · 义齿定制</p>
+            </div>
+            <span class="module-arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/expert.html'">
+            <div class="module-icon" style="background: rgba(139, 92, 246, 0.1);">🏆</div>
+            <div class="module-info">
+                <h4>专家预约</h4>
+                <p>预约名医 · 病例研讨 · 技术支持</p>
+            </div>
+            <span class="module-arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/franchise.html'">
+            <div class="module-icon" style="background: rgba(14, 165, 233, 0.1);">🔐</div>
+            <div class="module-info">
+                <h4>加盟赋能</h4>
+                <p>轻加盟模式 · 2万开启事业</p>
+            </div>
+            <span class="module-arrow">›</span>
+        </div>
+    </div>
+
+    <div class="ai-section">
+        <h3>🤖 AI 智能助手</h3>
+        <div class="ai-cards">
+            <div class="ai-card" onclick="location.href='pages/ai-xiaochi.html'">
+                <div class="ai-icon">💬</div>
+                <h4>AI小齿</h4>
+                <p>7×24智能客服</p>
+            </div>
+            <div class="ai-card second" onclick="location.href='pages/ai-yixiaobao.html'">
+                <div class="ai-icon">📋</div>
+                <h4>AI医小宝</h4>
+                <p>医保合规顾问</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="todo-section">
+        <div class="todo-card">
+            <div class="todo-header">
+                <h4>📋 待办事项</h4>
+                <a href="#">查看全部</a>
+            </div>
+            <div class="todo-item">
+                <span class="todo-dot warning"></span>
+                <span class="todo-text">您有 3 条新线索待跟进</span>
+                <span class="todo-count">3</span>
+            </div>
+            <div class="todo-item">
+                <span class="todo-dot"></span>
+                <span class="todo-text">2 个面试邀约待确认</span>
+                <span class="todo-count">2</span>
+            </div>
+            <div class="todo-item">
+                <span class="todo-dot danger"></span>
+                <span class="todo-text">专家预约申请待审核</span>
+                <span class="todo-count">1</span>
+            </div>
+            <div class="todo-item">
+                <span class="todo-dot"></span>
+                <span class="todo-text">新订单待发货</span>
+                <span class="todo-count">5</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item active">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="pages/talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="pages/training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="pages/marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="pages/supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+
+    <script>
+        // 根据URL参数模拟不同角色
+        const params = new URLSearchParams(location.search);
+        const role = params.get('role') || 'clinic-admin';
+
+        if (role === 'personal') {
+            document.getElementById('userName').textContent = '张三';
+            document.querySelector('.role').innerHTML = '<span class="tag tag-primary">个人用户</span>';
+            document.querySelector('.welcome-content p').textContent = '查看最新职位，学习培训课程';
+        } else if (role === 'platform-admin') {
+            document.getElementById('userName').textContent = '平台管理员';
+            document.querySelector('.role').innerHTML = '<span class="tag tag-danger">平台方</span>';
+        }
+    </script>
+</body>
+</html>

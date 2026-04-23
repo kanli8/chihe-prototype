@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动预览 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f5f5f5; }
+
+        .landing-header {
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+        .landing-header .icon { font-size: 4rem; margin-bottom: 15px; }
+        .landing-header h1 { font-size: 1.8rem; margin-bottom: 10px; }
+        .landing-header p { font-size: 1rem; opacity: 0.9; }
+
+        .form-card {
+            background: #fff;
+            margin: 15px;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .form-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-label { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 5px; display: block; }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .clinic-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 10px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+        .clinic-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .clinic-name { font-weight: 500; font-size: 0.9rem; }
+        .clinic-badge {
+            font-size: 0.75rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-header">
+        <div class="icon">🎁</div>
+        <h1>春季口腔健康义诊活动</h1>
+        <p>免费口腔检查 · 种植牙咨询 · 矫正方案设计</p>
+    </div>
+
+    <div class="form-card">
+        <div class="form-title">📝 预约报名</div>
+
+        <div class="form-group">
+            <label class="form-label">您的姓名</label>
+            <input type="text" class="form-input" placeholder="请输入姓名">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">手机号码</label>
+            <input type="tel" class="form-input" placeholder="请输入手机号码">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">年龄</label>
+            <input type="number" class="form-input" placeholder="请输入年龄">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">牙齿问题（可多选）</label>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 20px; font-size: 0.85rem;">
+                    <input type="checkbox"> 牙齿缺失
+                </label>
+                <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 20px; font-size: 0.85rem;">
+                    <input type="checkbox"> 牙齿不齐
+                </label>
+                <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 20px; font-size: 0.85rem;">
+                    <input type="checkbox"> 牙周问题
+                </label>
+                <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 20px; font-size: 0.85rem;">
+                    <input type="checkbox"> 洁牙需求
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">预约时间</label>
+            <input type="date" class="form-input">
+        </div>
+
+        <button class="submit-btn" onclick="alert('预约成功！我们将尽快与您联系。')">立即预约</button>
+
+        <div class="clinic-info">
+            <div class="clinic-logo">🦷</div>
+            <div>
+                <div class="clinic-name">博雅口腔门诊部</div>
+                <div class="clinic-badge">✅ 已认证</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

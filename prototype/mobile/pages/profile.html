@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            padding: 30px 20px;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .profile-name { font-size: 1.3rem; font-weight: 600; margin-bottom: 5px; }
+        .profile-role { font-size: 0.9rem; opacity: 0.9; }
+
+        .profile-stats {
+            display: flex;
+            padding: 20px;
+            background: #fff;
+            margin-top: -20px;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+        }
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-value { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 3px; }
+
+        .menu-section { padding: 15px; }
+        .menu-group { background: #fff; border-radius: 12px; margin-bottom: 15px; overflow: hidden; }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item:active { background: var(--bg-light); }
+        .menu-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 12px;
+        }
+        .menu-text { flex: 1; font-size: 0.95rem; }
+        .menu-arrow { color: var(--text-muted); }
+        .menu-badge {
+            background: #ef4444;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>个人中心</h1>
+        <span style="font-size: 1.4rem;">⚙️</span>
+    </header>
+
+    <div class="profile-header">
+        <div class="profile-info">
+            <div class="profile-avatar">🏥</div>
+            <div>
+                <div class="profile-name">博雅口腔门诊部</div>
+                <div class="profile-role">管理者 · 已认证 ✅</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-stats">
+        <div class="stat-item">
+            <div class="stat-value">12</div>
+            <div class="stat-label">我的订单</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">8</div>
+            <div class="stat-label">学习课程</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">5</div>
+            <div class="stat-label">投递简历</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">3</div>
+            <div class="stat-label">面试邀请</div>
+        </div>
+    </div>
+
+    <div class="menu-section">
+        <div class="menu-group">
+            <div class="menu-item" onclick="location.href='profile-edit.html'">
+                <div class="menu-icon" style="background: rgba(59, 130, 246, 0.1);">👤</div>
+                <span class="menu-text">我的资料</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="location.href='clinic-certify.html'">
+                <div class="menu-icon" style="background: rgba(16, 185, 129, 0.1);">🏥</div>
+                <span class="menu-text">门诊认证</span>
+                <span class="tag tag-success" style="margin-right: 10px;">已认证</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="location.href='identity-switch.html'">
+                <div class="menu-icon" style="background: rgba(139, 92, 246, 0.1);">🔄</div>
+                <span class="menu-text">身份切换</span>
+                <span class="menu-arrow">›</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <div class="menu-item" onclick="location.href='supply-orders.html'">
+                <div class="menu-icon" style="background: rgba(236, 72, 153, 0.1);">📦</div>
+                <span class="menu-text">我的订单</span>
+                <span class="menu-badge">3</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="location.href='training.html'">
+                <div class="menu-icon" style="background: rgba(59, 130, 246, 0.1);">📚</div>
+                <span class="menu-text">我的学习</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="location.href='talent-resume.html'">
+                <div class="menu-icon" style="background: rgba(16, 185, 129, 0.1);">📄</div>
+                <span class="menu-text">我的简历</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item" onclick="location.href='talent-post.html'">
+                <div class="menu-icon" style="background: rgba(245, 158, 11, 0.1);">💼</div>
+                <span class="menu-text">我的职位</span>
+                <span class="menu-arrow">›</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <div class="menu-item">
+                <div class="menu-icon" style="background: rgba(139, 92, 246, 0.1);">🔔</div>
+                <span class="menu-text">消息通知</span>
+                <span class="menu-badge">5</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon" style="background: rgba(107, 114, 128, 0.1);">❓</div>
+                <span class="menu-text">帮助与反馈</span>
+                <span class="menu-arrow">›</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon" style="background: rgba(107, 114, 128, 0.1);">📱</div>
+                <span class="menu-text">关于我们</span>
+                <span class="menu-arrow">›</span>
+            </div>
+        </div>
+
+        <button class="btn btn-outline btn-block" onclick="location.href='login.html'" style="margin-top: 20px;">
+            退出登录
+        </button>
+    </div>
+
+    <nav class="tab-bar" style="position: relative;">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

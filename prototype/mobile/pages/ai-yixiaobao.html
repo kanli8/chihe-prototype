@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI医小宝 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f0f2f5; }
+        .header { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); }
+
+        .hero-section {
+            padding: 20px;
+            background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+            color: #fff;
+            text-align: center;
+        }
+        .hero-section .icon { font-size: 3rem; margin-bottom: 10px; }
+        .hero-section h2 { font-size: 1.2rem; margin-bottom: 5px; }
+        .hero-section p { font-size: 0.9rem; opacity: 0.9; }
+
+        .search-section {
+            padding: 15px;
+            background: #fff;
+        }
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .search-box input:focus { border-color: #ec4899; }
+        .search-box button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .quick-questions {
+            padding: 15px;
+        }
+        .quick-questions h4 { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+        .question-list { background: #fff; border-radius: 12px; overflow: hidden; }
+        .question-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .question-item:last-child { border-bottom: none; }
+        .question-item:active { background: var(--bg-light); }
+        .question-text { font-size: 0.95rem; }
+        .question-arrow { color: var(--text-muted); }
+
+        .history-section { padding: 15px; }
+        .history-section h4 { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+        .history-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .history-q { font-size: 0.95rem; font-weight: 500; margin-bottom: 8px; }
+        .history-a {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .history-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>AI医小宝</h1>
+        <span style="font-size: 1.4rem;">📋</span>
+    </header>
+
+    <div class="hero-section">
+        <div class="icon">📋</div>
+        <h2>医保合规顾问</h2>
+        <p>基于官方政策知识库，智能解答医保合规问题</p>
+    </div>
+
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" placeholder="例如：根管治疗如何收费合规？" id="searchInput">
+            <button onclick="searchQuestion()">查询</button>
+        </div>
+    </div>
+
+    <div class="quick-questions">
+        <h4>🔍 常见问题</h4>
+        <div class="question-list">
+            <div class="question-item" onclick="showAnswer('根管治疗如何收费合规？', '根据医保规定，根管治疗按照牙位和治疗难度分级收费：\n\n1. 前牙根管治疗：约150-300元\n2. 前磨牙根管治疗：约200-400元\n3. 磨牙根管治疗：约300-600元\n\n注意：复杂根管（如弯曲钙化根管）可加收不超过50%的难度系数。所有收费需明码标价，并在治疗前告知患者。')">
+                <span class="question-text">根管治疗如何收费合规？</span>
+                <span class="question-arrow">›</span>
+            </div>
+            <div class="question-item" onclick="showAnswer('种植牙能否使用医保？', '目前，种植牙尚未纳入基本医保报销范围，但以下情况注意：\n\n1. 口腔检查、拔牙、牙周治疗等可报销\n2. 种植体本身不报销，但手术费部分可报销\n3. 建议告知患者提前了解当地政策\n\n平台可提供合规话术模板，帮助门诊与患者沟通。')">
+                <span class="question-text">种植牙能否使用医保？</span>
+                <span class="question-arrow">›</span>
+            </div>
+            <div class="question-item" onclick="showAnswer('DIP/DRG改革对口腔门诊的影响？', 'DIP/DRG支付改革对口腔门诊的主要影响：\n\n1. 费用控制：按病种打包付费，超支自负\n2. 服务规范：需严格按照诊疗指南执行\n3. 编码要求：病历首页需准确填写诊断编码\n\n建议门诊加强成本核算，优化服务流程。')">
+                <span class="question-text">DIP/DRG改革对口腔门诊的影响？</span>
+                <span class="question-arrow">›</span>
+            </div>
+            <div class="question-item" onclick="showAnswer('什么是「114项新规」？', '「114项新规」是指2024年发布的《口腔种植医疗服务价格立项和试行标准》中的114项收费项目规范：\n\n1. 规范了种植牙各环节的收费标准\n2. 设立了价格上限，防止乱收费\n3. 实行价格透明公示制度\n\n口腔门诊应认真学习并严格执行。')">
+                <span class="question-text">什么是「114项新规」？</span>
+                <span class="question-arrow">›</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="history-section">
+        <h4>📜 历史记录</h4>
+        <div class="history-card" onclick="alert('查看历史详情')">
+            <div class="history-q">Q: 拔牙能否使用医保？</div>
+            <div class="history-a">A: 根据医保规定，普通拔牙属于门诊统筹范围，可按比例报销。但智齿拔除因手术难度不同，报销标准有差异...</div>
+            <div class="history-meta">
+                <span>2026-04-22</span>
+                <span>查看详情 ›</span>
+            </div>
+        </div>
+        <div class="history-card" onclick="alert('查看历史详情')">
+            <div class="history-q">Q: 牙齿美白能否开展？</div>
+            <div class="history-a">A: 牙齿美白属于医疗美容项目，需取得相应资质。建议在开展前了解当地卫健部门的具体要求...</div>
+            <div class="history-meta">
+                <span>2026-04-21</span>
+                <span>查看详情 ›</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchQuestion() {
+            const q = document.getElementById('searchInput').value.trim();
+            if (q) {
+                showAnswer(q, '正在查询，请稍候...');
+            }
+        }
+
+        function showAnswer(question, answer) {
+            alert(`Q: ${question}\n\nA: ${answer}`);
+        }
+    </script>
+</body>
+</html>

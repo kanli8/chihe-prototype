@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门诊审核 - 齿合平台后台</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 220px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 20px 0;
+        }
+        .logo {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .logo h1 { font-size: 1.3rem; margin: 0; }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .nav-item.active { background: rgba(59, 130, 246, 0.3); color: #fff; border-left: 3px solid #3b82f6; }
+        .nav-item .icon { font-size: 1.2rem; margin-right: 12px; width: 24px; text-align: center; }
+        .nav-item .badge { margin-left: auto; background: #ef4444; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; }
+
+        .main { margin-left: 220px; min-height: 100vh; }
+
+        .topbar {
+            background: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .breadcrumb { color: #6b7280; font-size: 0.9rem; }
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .content { padding: 30px; }
+        .page-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; color: #1f2937; }
+
+        .tab-bar {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 5px;
+            border-radius: 8px;
+            width: fit-content;
+        }
+        .tab-item {
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        .tab-item.active { background: #3b82f6; color: #fff; }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { width: 120px; color: #6b7280; font-size: 0.9rem; }
+        .info-value { flex: 1; font-size: 0.9rem; }
+
+        .images-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .images-row .img-thumb {
+            width: 80px;
+            height: 80px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border: none;
+        }
+        .btn-approve { background: #10b981; color: #fff; }
+        .btn-reject { background: #ef4444; color: #fff; }
+        .btn-outline { background: #fff; border: 1px solid #e5e7eb; color: #374151; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>🦷 齿合平台</h1>
+        </div>
+
+        <a class="nav-item" onclick="location.href='index.html'">
+            <span class="icon">📊</span>
+            <span>数据看板</span>
+        </a>
+        <a class="nav-item" onclick="location.href='content.html'">
+            <span class="icon">📦</span>
+            <span>内容管理</span>
+        </a>
+        <a class="nav-item active">
+            <span class="icon">🏥</span>
+            <span>门诊审核</span>
+            <span class="badge">3</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">👥</span>
+            <span>用户管理</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">🤖</span>
+            <span>AI知识库</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">💰</span>
+            <span>订单与财务</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>系统设置</span>
+        </a>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <span class="breadcrumb">首页 / 门诊审核 / 审核详情</span>
+            <div class="user-avatar">管</div>
+        </div>
+
+        <div class="content">
+            <h1 class="page-title">门诊审核详情</h1>
+
+            <div class="tab-bar" style="margin-bottom: 20px;">
+                <div class="tab-item active">基本信息</div>
+                <div class="tab-item">资质文件</div>
+                <div class="tab-item">审核历史</div>
+            </div>
+
+            <div class="detail-grid">
+                <div class="card">
+                    <h3>📋 基本信息</h3>
+                    <div class="info-row">
+                        <span class="info-label">门诊名称</span>
+                        <span class="info-value">博雅口腔门诊部</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">统一社会信用代码</span>
+                        <span class="info-value">91330108MA2B12345X</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">所在城市</span>
+                        <span class="info-value">浙江省杭州市江干区</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">详细地址</span>
+                        <span class="info-value">钱江路123号博雅大厦3楼</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">牙椅数量</span>
+                        <span class="info-value">8台</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">法人代表</span>
+                        <span class="info-value">张三</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">联系电话</span>
+                        <span class="info-value">138****8888</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">申请时间</span>
+                        <span class="info-value">2026-04-20 14:30</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>📄 资质文件</h3>
+                    <div class="info-row">
+                        <span class="info-label">营业执照</span>
+                        <div class="images-row">
+                            <div class="img-thumb">📄</div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">医疗执业许可证</span>
+                        <div class="images-row">
+                            <div class="img-thumb">📄</div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">其他资质</span>
+                        <div class="images-row">
+                            <div class="img-thumb">📄</div>
+                            <div class="img-thumb">📄</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h3>📝 审核操作</h3>
+                <div class="info-row">
+                    <span class="info-label">审核状态</span>
+                    <span style="color: #f59e0b; font-weight: 500;">待审核</span>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-approve" onclick="alert('审核通过！')">✅ 审核通过</button>
+                    <button class="btn btn-reject" onclick="alert('审核驳回！')">❌ 审核驳回</button>
+                    <button class="btn btn-outline" onclick="alert('暂时搁置')">⏸ 暂时搁置</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

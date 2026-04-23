@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能获客 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+        .header { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+
+        .stats-bar {
+            display: flex;
+            padding: 15px;
+            gap: 15px;
+            background: #fff;
+        }
+        .stat-item { flex: 1; text-align: center; }
+        .stat-value { font-size: 1.5rem; font-weight: 700; color: #f59e0b; }
+        .stat-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 3px; }
+
+        .section-title {
+            padding: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section-title a { color: var(--primary); font-size: 0.85rem; text-decoration: none; font-weight: normal; }
+
+        .activity-list { padding: 0 15px 15px; }
+        .activity-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .activity-preview {
+            height: 120px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .activity-info { padding: 15px; }
+        .activity-title { font-weight: 600; margin-bottom: 5px; }
+        .activity-meta { font-size: 0.85rem; color: var(--text-secondary); }
+        .activity-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        .activity-stat { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .template-list { padding: 0 15px 15px; }
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .template-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .template-thumb {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        .template-info { padding: 10px; }
+        .template-name { font-size: 0.9rem; font-weight: 500; }
+        .template-use { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+
+        .fab {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>智能获客</h1>
+        <span style="font-size: 1.4rem;">📊</span>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">1,286</div>
+            <div class="stat-label">总线索数</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">89</div>
+            <div class="stat-label">本月新增</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">23</div>
+            <div class="stat-label">已跟进</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">12</div>
+            <div class="stat-label">已转化</div>
+        </div>
+    </div>
+
+    <div class="section-title">
+        我的活动
+        <a href="#">查看全部 ›</a>
+    </div>
+
+    <div class="activity-list">
+        <div class="activity-card" onclick="location.href='marketing-detail.html'">
+            <div class="activity-preview">🎉</div>
+            <div class="activity-info">
+                <div class="activity-title">春季口腔健康义诊活动</div>
+                <div class="activity-meta">创建于 2026-04-15 · H5落地页</div>
+                <div class="activity-stats">
+                    <span class="activity-stat">👁 1,234 访问</span>
+                    <span class="activity-stat">📝 89 线索</span>
+                    <span class="activity-stat">✅ 12 转化</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-card" onclick="location.href='marketing-detail.html'">
+            <div class="activity-preview" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);">🦷</div>
+            <div class="activity-info">
+                <div class="activity-title">种植牙专题讲座预约</div>
+                <div class="activity-meta">创建于 2026-04-10 · H5落地页</div>
+                <div class="activity-stats">
+                    <span class="activity-stat">👁 856 访问</span>
+                    <span class="activity-stat">📝 45 线索</span>
+                    <span class="activity-stat">✅ 8 转化</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">
+        活动模板
+        <a href="#">更多模板 ›</a>
+    </div>
+
+    <div class="template-list">
+        <div class="template-grid">
+            <div class="template-card" onclick="location.href='marketing-create.html'">
+                <div class="template-thumb" style="background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);">🎁</div>
+                <div class="template-info">
+                    <div class="template-name">义诊活动模板</div>
+                    <div class="template-use">1,234 门店使用</div>
+                </div>
+            </div>
+            <div class="template-card" onclick="location.href='marketing-create.html'">
+                <div class="template-thumb" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);">📚</div>
+                <div class="template-info">
+                    <div class="template-name">健康讲座模板</div>
+                    <div class="template-use">856 门店使用</div>
+                </div>
+            </div>
+            <div class="template-card" onclick="location.href='marketing-create.html'">
+                <div class="template-thumb" style="background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);">💰</div>
+                <div class="template-info">
+                    <div class="template-name">优惠活动模板</div>
+                    <div class="template-use">2,156 门店使用</div>
+                </div>
+            </div>
+            <div class="template-card" onclick="location.href='marketing-create.html'">
+                <div class="template-thumb" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">🎯</div>
+                <div class="template-info">
+                    <div class="template-name">预约体验模板</div>
+                    <div class="template-use">1,567 门店使用</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab" onclick="location.href='marketing-create.html'">+</div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item active">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

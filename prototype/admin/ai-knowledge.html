@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI知识库 - 齿合平台后台</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 220px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 20px 0;
+        }
+        .logo {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .logo h1 { font-size: 1.3rem; margin: 0; }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .nav-item.active { background: rgba(59, 130, 246, 0.3); color: #fff; border-left: 3px solid #3b82f6; }
+        .nav-item .icon { font-size: 1.2rem; margin-right: 12px; width: 24px; text-align: center; }
+
+        .main { margin-left: 220px; min-height: 100vh; }
+
+        .topbar {
+            background: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .breadcrumb { color: #6b7280; font-size: 0.9rem; }
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .content { padding: 30px; }
+        .page-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; color: #1f2937; }
+
+        .ai-tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0;
+        }
+        .ai-tab {
+            padding: 12px 0;
+            margin-bottom: -2px;
+            border-bottom: 2px solid transparent;
+            color: #6b7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ai-tab.active { border-bottom-color: #8b5cf6; color: #8b5cf6; }
+        .ai-tab .icon { font-size: 1.3rem; }
+
+        .table-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .table-header h3 { font-size: 1rem; font-weight: 600; }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            border: none;
+        }
+        .btn-primary { background: #8b5cf6; color: #fff; }
+        .btn-outline { background: #fff; border: 1px solid #e5e7eb; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        th { background: #f9fafb; font-weight: 600; font-size: 0.85rem; color: #6b7280; }
+        td { font-size: 0.9rem; }
+        tr:hover { background: #f9fafb; }
+
+        .qa-pair {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 5px 0;
+        }
+        .qa-q { color: #1f2937; font-weight: 500; margin-bottom: 5px; }
+        .qa-a { color: #6b7280; font-size: 0.85rem; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #f3f4f6;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+
+        .action-btn {
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: none;
+            background: #f3f4f6;
+            margin-right: 5px;
+        }
+        .action-btn:hover { background: #e5e7eb; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>🦷 齿合平台</h1>
+        </div>
+
+        <a class="nav-item" onclick="location.href='index.html'">
+            <span class="icon">📊</span>
+            <span>数据看板</span>
+        </a>
+        <a class="nav-item" onclick="location.href='content.html'">
+            <span class="icon">📦</span>
+            <span>内容管理</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">🏥</span>
+            <span>门诊审核</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">👥</span>
+            <span>用户管理</span>
+        </a>
+        <a class="nav-item active">
+            <span class="icon">🤖</span>
+            <span>AI知识库</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">💰</span>
+            <span>订单与财务</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>系统设置</span>
+        </a>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <span class="breadcrumb">首页 / AI知识库</span>
+            <div class="user-avatar">管</div>
+        </div>
+
+        <div class="content">
+            <h1 class="page-title">AI知识库管理</h1>
+
+            <div class="ai-tabs">
+                <div class="ai-tab active">
+                    <span class="icon">💬</span>
+                    <span>AI小齿（智能客服）</span>
+                </div>
+                <div class="ai-tab">
+                    <span class="icon">📋</span>
+                    <span>AI医小宝（合规顾问）</span>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h3>💬 问答知识库</h3>
+                    <div class="table-actions">
+                        <button class="btn btn-outline">导入</button>
+                        <button class="btn btn-outline">导出</button>
+                        <button class="btn btn-primary">+ 新增问答</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>问题（关键词）</th>
+                            <th>回答</th>
+                            <th>标签</th>
+                            <th>调用次数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="max-width: 200px;">
+                                <div class="qa-pair">
+                                    <div class="qa-q">种植牙一般多少钱？</div>
+                                </div>
+                            </td>
+                            <td style="max-width: 250px;">
+                                <div class="qa-a">种植牙费用约8000-25000元/颗，根据品牌、手术复杂度等因素...</div>
+                            </td>
+                            <td>
+                                <span class="tag">种植牙</span>
+                                <span class="tag">费用</span>
+                            </td>
+                            <td>1,234</td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="qa-pair">
+                                    <div class="qa-q">正畸需要多久？</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="qa-a">正畸治疗一般需要1-2年，具体时间根据病例复杂程度...</div>
+                            </td>
+                            <td>
+                                <span class="tag">正畸</span>
+                                <span class="tag">疗程</span>
+                            </td>
+                            <td>856</td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="qa-pair">
+                                    <div class="qa-q">洁牙多少钱？</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="qa-a">普通洁牙约100-300元，超声波洁牙约200-500元...</div>
+                            </td>
+                            <td>
+                                <span class="tag">洁牙</span>
+                                <span class="tag">价格</span>
+                            </td>
+                            <td>2,345</td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="qa-pair">
+                                    <div class="qa-q">拔智齿能用医保吗？</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="qa-a">普通拔牙属于医保范围，智齿拔除根据手术难度报销...</div>
+                            </td>
+                            <td>
+                                <span class="tag">医保</span>
+                                <span class="tag">拔牙</span>
+                            </td>
+                            <td>1,567</td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-card" style="margin-top: 20px;">
+                <div class="table-header">
+                    <h3>🎯 意图配置</h3>
+                    <button class="btn btn-primary">+ 新增意图</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>意图名称</th>
+                            <th>触发关键词</th>
+                            <th>回复模板</th>
+                            <th>启用状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>术后回访</td>
+                            <td>回访/注意事项/恢复</td>
+                            <td>您好，关于术后护理，请注意以下几点...</td>
+                            <td><span style="color: #10b981;">● 已启用</span></td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>预约提醒</td>
+                            <td>预约/时间/复诊</td>
+                            <td>您的预约时间是 {time}，请准时到诊...</td>
+                            <td><span style="color: #10b981;">● 已启用</span></td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>项目咨询</td>
+                            <td>种植/正畸/美白</td>
+                            <td>关于 {project}，我来为您介绍...</td>
+                            <td><span style="color: #10b981;">● 已启用</span></td>
+                            <td>
+                                <button class="action-btn">编辑</button>
+                                <button class="action-btn">禁用</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

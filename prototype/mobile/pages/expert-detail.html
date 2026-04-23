@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专家详情 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f5f5f5; }
+
+        .expert-header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 30px 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .expert-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .expert-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+        .expert-title { font-size: 1rem; opacity: 0.9; margin-bottom: 15px; }
+        .expert-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .expert-tag { padding: 5px 12px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.85rem; }
+
+        .info-card {
+            background: #fff;
+            margin: 15px;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .info-card h3 { font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .schedule-section { padding: 0 15px 15px; }
+        .schedule-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .schedule-row {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-date { width: 80px; font-size: 0.9rem; font-weight: 500; }
+        .schedule-time { width: 100px; font-size: 0.85rem; color: var(--text-secondary); }
+        .schedule-status {
+            flex: 1;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .schedule-status.available { color: var(--success); }
+        .schedule-status.full { color: var(--text-muted); }
+
+        .action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 12px 15px;
+            display: flex;
+            gap: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+        .action-bar .btn { flex: 1; padding: 12px; border-radius: 8px; font-size: 1rem; border: none; cursor: pointer; }
+        .action-bar .btn-consult { background: #fff; border: 1px solid #8b5cf6; color: #8b5cf6; }
+        .action-bar .btn-book { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: transparent; position: absolute;">
+        <span class="header-back" onclick="history.back()" style="color: #fff;">‹</span>
+        <h1>专家详情</h1>
+        <span style="font-size: 1.4rem;">📞</span>
+    </header>
+
+    <div class="expert-header">
+        <div class="expert-avatar">👨‍⚕️</div>
+        <div class="expert-name">李建华 教授</div>
+        <div class="expert-title">主任医师 · 口腔种植专家</div>
+        <div class="expert-tags">
+            <span class="expert-tag">口腔种植</span>
+            <span class="expert-tag">复杂病例</span>
+            <span class="expert-tag">颌面外科</span>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h3>📋 个人简介</h3>
+        <p class="info-text">
+            李建华教授，主任医师，硕士生导师。毕业于北京大学口腔医学院，从事口腔临床工作30余年，在口腔种植领域有深厚造诣。擅长各类复杂种植手术，包括骨增量、上颌窦提升、全口种植修复等。累计完成种植手术超5000例，成功率98%以上。
+        </p>
+    </div>
+
+    <div class="info-card">
+        <h3>🏆 学术成就</h3>
+        <p class="info-text">
+            • 主持国家自然科学基金项目3项<br>
+            • 发表SCI论文20余篇<br>
+            • 参编《口腔种植学》教材<br>
+            • 担任中华口腔医学会种植专委会委员
+        </p>
+    </div>
+
+    <div class="schedule-section">
+        <div class="schedule-card">
+            <h3 style="font-size: 1rem; margin-bottom: 12px;">📅 可预约档期</h3>
+            <div class="schedule-row">
+                <span class="schedule-date">4月24日</span>
+                <span class="schedule-time">09:00-12:00</span>
+                <span class="schedule-status available">可预约</span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-date">4月24日</span>
+                <span class="schedule-time">14:00-17:00</span>
+                <span class="schedule-status full">已约满</span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-date">4月25日</span>
+                <span class="schedule-time">09:00-12:00</span>
+                <span class="schedule-status available">可预约</span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-date">4月26日</span>
+                <span class="schedule-time">14:00-17:00</span>
+                <span class="schedule-status available">可预约</span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-date">4月27日</span>
+                <span class="schedule-time">全天</span>
+                <span class="schedule-status full">已约满</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <button class="btn btn-consult" onclick="alert('咨询功能开发中...')">☎️ 电话咨询</button>
+        <button class="btn btn-book" onclick="alert('跳转预约申请页面')">📅 立即预约</button>
+    </div>
+</body>
+</html>

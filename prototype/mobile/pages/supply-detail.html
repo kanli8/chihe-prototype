@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f5f5f5; padding-bottom: 70px; }
+
+        .product-img {
+            height: 300px;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        .product-info {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #ef4444;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .product-price span { font-size: 1rem; }
+        .product-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+        .product-meta { font-size: 0.9rem; color: var(--text-secondary); }
+        .product-meta span { margin-right: 15px; }
+
+        .detail-section {
+            background: #fff;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+        }
+        .detail-section h3 { font-size: 1rem; margin-bottom: 12px; }
+        .detail-content { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .comment-section {
+            background: #fff;
+            padding: 15px 20px;
+        }
+        .comment-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .comment-item:last-child { border-bottom: none; }
+        .comment-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .comment-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .comment-name { font-weight: 500; font-size: 0.9rem; }
+        .comment-time { font-size: 0.8rem; color: var(--text-muted); }
+        .comment-content { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+        .action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 10px 15px;
+            display: flex;
+            gap: 12px;
+            border-top: 1px solid var(--border-color);
+            z-index: 100;
+        }
+        .action-bar .btn-cart {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ec4899;
+            color: #ec4899;
+            background: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .action-bar .btn-buy {
+            flex: 2;
+            padding: 12px;
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: #fff; color: var(--text-primary);">
+        <span class="header-back" onclick="history.back()">‹</span>
+        <h1>商品详情</h1>
+        <span style="font-size: 1.4rem;">🛒</span>
+    </header>
+
+    <div class="product-img">💉</div>
+
+    <div class="product-info">
+        <div class="product-price"><span>¥</span>128.00</div>
+        <div class="product-title">一次性口腔检查包（10套装）</div>
+        <div class="product-meta">
+            <span>月销 856</span>
+            <span>库存 2,340</span>
+            <span>快递 ¥6.00</span>
+        </div>
+    </div>
+
+    <div class="detail-section">
+        <h3>商品详情</h3>
+        <div class="detail-content">
+            <p>【产品名称】一次性口腔检查包</p>
+            <p>【规格】10套/盒</p>
+            <p>【材质】优质无纺布、PE薄膜</p>
+            <p>【有效期】2年</p>
+            <p>【适用范围】口腔检查、治疗过程中的防护使用</p>
+            <p>【产品特点】</p>
+            <p>• 一次性使用，干净卫生</p>
+            <p>• 优质材料，柔软舒适</p>
+            <p>• 独立包装，方便使用</p>
+            <p>• 经过环氧乙烷灭菌处理</p>
+        </div>
+    </div>
+
+    <div class="comment-section">
+        <h3>商品评价 (128)</h3>
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="comment-avatar">🦷</div>
+                <div>
+                    <div class="comment-name">口腔医生李</div>
+                    <div class="comment-time">2026-04-15</div>
+                </div>
+            </div>
+            <div class="comment-content">质量很好，材质柔软，使用方便，包装严实。已经是第三次购买了，推荐！</div>
+        </div>
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="comment-avatar">🏥</div>
+                <div>
+                    <div class="comment-name">牙科诊所王</div>
+                    <div class="comment-time">2026-04-10</div>
+                </div>
+            </div>
+            <div class="comment-content">性价比很高，发货速度快，下次还会回购。</div>
+        </div>
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="comment-avatar">👩‍⚕️</div>
+                <div>
+                    <div class="comment-name">护士小张</div>
+                    <div class="comment-time">2026-04-05</div>
+                </div>
+            </div>
+            <div class="comment-content">产品很不错，符合我们的需求，客服态度也很好。</div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <button class="btn-cart" onclick="alert('已加入购物车')">加入购物车</button>
+        <button class="btn-buy" onclick="alert('跳转下单页面')">立即购买</button>
+    </div>
+</body>
+</html>

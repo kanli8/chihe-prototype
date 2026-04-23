@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程详情 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f5f5f5; padding-bottom: 70px; }
+
+        .course-cover {
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+        .course-cover .icon { font-size: 5rem; margin-bottom: 15px; }
+        .course-cover h1 { font-size: 1.5rem; padding: 0 20px; }
+
+        .course-info {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .course-price { color: #ef4444; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        .course-price span { font-size: 0.9rem; color: var(--text-secondary); font-weight: normal; }
+        .course-meta { display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-secondary); }
+
+        .section-card {
+            background: #fff;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+        }
+        .section-card h3 { font-size: 1rem; margin-bottom: 12px; }
+        .section-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .chapter-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .chapter-item:last-child { border-bottom: none; }
+        .chapter-num {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-right: 12px;
+        }
+        .chapter-info { flex: 1; }
+        .chapter-title { font-size: 0.95rem; margin-bottom: 3px; }
+        .chapter-duration { font-size: 0.8rem; color: var(--text-muted); }
+        .chapter-play { color: var(--primary); font-size: 1.2rem; }
+
+        .action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 12px 15px;
+            display: flex;
+            gap: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+        .action-bar .btn { flex: 1; padding: 12px; border-radius: 8px; font-size: 1rem; border: none; cursor: pointer; }
+        .action-bar .btn-collect { background: #fff; border: 1px solid var(--border-color); }
+        .action-bar .btn-study { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: #fff; }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: transparent; position: absolute; z-index: 10;">
+        <span class="header-back" onclick="history.back()" style="color: #fff;">‹</span>
+        <h1>课程详情</h1>
+        <span style="font-size: 1.4rem;">📚</span>
+    </header>
+
+    <div class="course-cover">
+        <div class="icon">🎓</div>
+        <h1>口腔种植技术实战班</h1>
+    </div>
+
+    <div class="course-info">
+        <div class="course-price">¥299.00 <span>（VIP免费学）</span></div>
+        <div class="course-meta">
+            <span>👨‍⚕️ 李明华 教授</span>
+            <span>⏱ 3.5小时</span>
+            <span>👥 128人学习</span>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h3>📋 课程介绍</h3>
+        <p>本课程针对口腔种植零基础医生设计，从种植理论到实战操作，全面讲解口腔种植技术。课程包含种植手术适应症评估、种植体选择、手术操作流程、术后管理等内容。</p>
+    </div>
+
+    <div class="section-card">
+        <h3>📚 课程大纲</h3>
+        <div class="chapter-item">
+            <div class="chapter-num">1</div>
+            <div class="chapter-info">
+                <div class="chapter-title">口腔种植概述与适应症</div>
+                <div class="chapter-duration">25分钟</div>
+            </div>
+            <span class="chapter-play">▶</span>
+        </div>
+        <div class="chapter-item">
+            <div class="chapter-num">2</div>
+            <div class="chapter-info">
+                <div class="chapter-title">种植体系统选择</div>
+                <div class="chapter-duration">30分钟</div>
+            </div>
+            <span class="chapter-play">▶</span>
+        </div>
+        <div class="chapter-item">
+            <div class="chapter-num">3</div>
+            <div class="chapter-info">
+                <div class="chapter-title">种植手术操作演示</div>
+                <div class="chapter-duration">45分钟</div>
+            </div>
+            <span class="chapter-play">▶</span>
+        </div>
+        <div class="chapter-item">
+            <div class="chapter-num">4</div>
+            <div class="chapter-info">
+                <div class="chapter-title">术后管理与并发症处理</div>
+                <div class="chapter-duration">35分钟</div>
+            </div>
+            <span class="chapter-play">▶</span>
+        </div>
+        <div class="chapter-item">
+            <div class="chapter-num">5</div>
+            <div class="chapter-info">
+                <div class="chapter-title">案例分析与讨论</div>
+                <div class="chapter-duration">40分钟</div>
+            </div>
+            <span class="chapter-play">▶</span>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h3>👨‍🏫 讲师介绍</h3>
+        <p>
+            <strong>李明华</strong>，主任医师，硕士生导师<br><br>
+            毕业于北京大学口腔医学院，从事口腔临床工作30余年，在口腔种植领域有深厚造诣。累计完成种植手术超5000例，成功率98%以上。
+        </p>
+    </div>
+
+    <div class="action-bar">
+        <button class="btn btn-collect" onclick="alert('已收藏课程')">🤍 收藏</button>
+        <button class="btn btn-study" onclick="alert('开始学习')">立即学习</button>
+    </div>
+</body>
+</html>

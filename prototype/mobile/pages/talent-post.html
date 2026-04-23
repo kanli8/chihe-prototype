@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布职位 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .form-section { padding: 15px; }
+        .form-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .form-card h3 { font-size: 1rem; margin-bottom: 15px; }
+        .form-row { margin-bottom: 15px; }
+        .form-row:last-child { margin-bottom: 0; }
+        .form-label { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; display: block; }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #fff;
+        }
+        textarea.form-input { resize: none; min-height: 100px; }
+
+        .salary-range {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .salary-range input { flex: 1; text-align: center; }
+        .salary-range span { color: var(--text-muted); }
+
+        .tag-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            min-height: 50px;
+        }
+        .tag-input .tag {
+            padding: 5px 10px;
+            background: var(--bg-light);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .tag-input .tag span { cursor: pointer; color: var(--text-muted); }
+
+        .action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 12px 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        .btn-publish {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+        <a href="talent.html" class="header-back">‹</a>
+        <h1>发布职位</h1>
+        <span></span>
+    </header>
+
+    <div class="form-section">
+        <div class="form-card">
+            <h3>📋 基本信息</h3>
+            <div class="form-row">
+                <label class="form-label">职位名称</label>
+                <input type="text" class="form-input" placeholder="例如：口腔执业医生">
+            </div>
+            <div class="form-row">
+                <label class="form-label">职位类型</label>
+                <select class="form-select">
+                    <option>口腔医生</option>
+                    <option>口腔护士</option>
+                    <option>口腔咨询师</option>
+                    <option>门诊前台</option>
+                    <option>门诊管理者</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>💰 薪资待遇</h3>
+            <div class="form-row">
+                <label class="form-label">薪资范围</label>
+                <div class="salary-range">
+                    <input type="number" class="form-input" placeholder="最低" value="15">
+                    <span>K</span>
+                    <span>~</span>
+                    <input type="number" class="form-input" placeholder="最高" value="25">
+                    <span>K/月</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <label class="form-label">薪资构成</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 8px;">
+                        <input type="checkbox" checked> 基本工资
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 8px;">
+                        <input type="checkbox" checked> 提成
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 8px;">
+                        <input type="checkbox"> 年终奖
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: var(--bg-light); border-radius: 8px;">
+                        <input type="checkbox"> 股权激励
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>📝 职位描述</h3>
+            <div class="form-row">
+                <textarea class="form-input" placeholder="描述职位的工作内容、职责等..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>🎯 任职要求</h3>
+            <div class="form-row">
+                <label class="form-label">学历要求</label>
+                <select class="form-select">
+                    <option>不限</option>
+                    <option>中专</option>
+                    <option>大专</option>
+                    <option>本科</option>
+                    <option>硕士</option>
+                    <option>博士</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label class="form-label">经验要求</label>
+                <select class="form-select">
+                    <option>不限</option>
+                    <option>1-3年</option>
+                    <option>3-5年</option>
+                    <option>5-10年</option>
+                    <option>10年以上</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label class="form-label">福利标签</label>
+                <div class="tag-input">
+                    <span class="tag">五险一金 <span>×</span></span>
+                    <span class="tag">包吃住 <span>×</span></span>
+                    <span class="tag">年终奖 <span>×</span></span>
+                    <span class="tag">定期体检 <span>×</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>📍 工作地址</h3>
+            <div class="form-row">
+                <label class="form-label">省市区</label>
+                <select class="form-select">
+                    <option>浙江省 · 杭州市 · 江干区</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label class="form-label">详细地址</label>
+                <input type="text" class="form-input" placeholder="钱江路123号">
+            </div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <button class="btn-publish" onclick="alert('职位发布成功！')">发布职位</button>
+    </div>
+</body>
+</html>

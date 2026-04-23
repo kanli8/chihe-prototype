@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .order-tabs {
+            display: flex;
+            background: #fff;
+            padding: 15px 0;
+        }
+        .order-tab {
+            flex: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+        .order-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .order-list { padding: 15px; }
+        .order-card {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+        .order-store { font-weight: 500; }
+        .order-status { color: var(--primary); }
+        .order-status.pending { color: var(--warning); }
+        .order-status.shipped { color: #3b82f6; }
+
+        .order-item {
+            display: flex;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .order-item:last-child { border-bottom: none; }
+        .order-img {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+        .order-info { flex: 1; }
+        .order-name { font-size: 0.9rem; font-weight: 500; margin-bottom: 5px; }
+        .order-spec { font-size: 0.8rem; color: var(--text-muted); }
+        .order-price { text-align: right; }
+        .order-price .price { font-weight: 600; }
+        .order-price .num { font-size: 0.8rem; color: var(--text-muted); }
+
+        .order-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 12px 15px;
+            border-top: 1px solid var(--border-color);
+            gap: 10px;
+        }
+        .order-total {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .order-total strong { color: #ef4444; font-size: 1.1rem; margin-left: 5px; }
+        .order-action {
+            padding: 6px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            background: #fff;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .order-action.primary {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: #fff; color: var(--text-primary);">
+        <span class="header-back" onclick="history.back()">‹</span>
+        <h1>我的订单</h1>
+        <span style="font-size: 1.4rem;">🔍</span>
+    </header>
+
+    <div class="order-tabs">
+        <div class="order-tab active">全部</div>
+        <div class="order-tab">待付款</div>
+        <div class="order-tab">待发货</div>
+        <div class="order-tab">待收货</div>
+        <div class="order-tab">已完成</div>
+    </div>
+
+    <div class="order-list">
+        <div class="order-card">
+            <div class="order-header">
+                <span class="order-store">🏥 博雅口腔供应商</span>
+                <span class="order-status shipped">已发货</span>
+            </div>
+            <div class="order-item">
+                <div class="order-img">💉</div>
+                <div class="order-info">
+                    <div class="order-name">一次性口腔检查包（10套装）</div>
+                    <div class="order-spec">× 2</div>
+                </div>
+                <div class="order-price">
+                    <div class="price">¥256.00</div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <div class="order-total">合计：<strong>¥256.00</strong></div>
+                <button class="order-action">查看物流</button>
+                <button class="order-action primary">确认收货</button>
+            </div>
+        </div>
+
+        <div class="order-card">
+            <div class="order-header">
+                <span class="order-store">🏥 医疗器械专营店</span>
+                <span class="order-status pending">待发货</span>
+            </div>
+            <div class="order-item">
+                <div class="order-img">💊</div>
+                <div class="order-info">
+                    <div class="order-name">碘甘油 口腔消毒剂 10ml</div>
+                    <div class="order-spec">× 5</div>
+                </div>
+                <div class="order-price">
+                    <div class="price">¥90.00</div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <div class="order-total">合计：<strong>¥90.00</strong></div>
+                <button class="order-action">催发货</button>
+                <button class="order-action">取消订单</button>
+            </div>
+        </div>
+
+        <div class="order-card">
+            <div class="order-header">
+                <span class="order-store">🏥 义齿加工中心</span>
+                <span class="order-status">已完成</span>
+            </div>
+            <div class="order-item">
+                <div class="order-img">🦷</div>
+                <div class="order-info">
+                    <div class="order-name">种植体 基台 愈合基台套装</div>
+                    <div class="order-spec">× 1</div>
+                </div>
+                <div class="order-price">
+                    <div class="price">¥2,680.00</div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <div class="order-total">合计：<strong>¥2,680.00</strong></div>
+                <button class="order-action">再次购买</button>
+                <button class="order-action primary">评价</button>
+            </div>
+        </div>
+
+        <div class="order-card">
+            <div class="order-header">
+                <span class="order-store">🏥 博雅口腔供应商</span>
+                <span class="order-status">待付款</span>
+            </div>
+            <div class="order-item">
+                <div class="order-img">🧴</div>
+                <div class="order-info">
+                    <div class="order-name">医用酒精消毒液 500ml</div>
+                    <div class="order-spec">× 10</div>
+                </div>
+                <div class="order-price">
+                    <div class="price">¥250.00</div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <div class="order-total">合计：<strong>¥250.00</strong>（含运费¥6.00）</div>
+                <button class="order-action">取消订单</button>
+                <button class="order-action primary">去付款</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar" style="position: relative;">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

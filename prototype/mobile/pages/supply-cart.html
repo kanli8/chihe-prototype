@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .cart-list { padding: 15px; }
+        .cart-store {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .cart-store-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        .cart-store-header input { margin-right: 10px; }
+        .cart-item {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-checkbox { margin-right: 12px; display: flex; align-items: center; }
+        .cart-checkbox input { width: 20px; height: 20px; }
+        .cart-img {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-right: 12px;
+        }
+        .cart-info { flex: 1; }
+        .cart-name { font-size: 0.95rem; font-weight: 500; margin-bottom: 8px; }
+        .cart-price { color: #ef4444; font-weight: 600; margin-bottom: 8px; }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--border-color);
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .quantity-num {
+            width: 40px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .cart-delete {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        .cart-footer {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+        }
+        .cart-total { font-size: 0.9rem; }
+        .cart-total strong { color: #ef4444; font-size: 1.2rem; }
+        .cart-checkout {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: #fff; color: var(--text-primary);">
+        <span class="header-back" onclick="history.back()">‹</span>
+        <h1>购物车</h1>
+        <span style="font-size: 0.9rem;" onclick="alert('管理购物车')">管理</span>
+    </header>
+
+    <div class="cart-list">
+        <div class="cart-store">
+            <div class="cart-store-header">
+                <input type="checkbox" checked>
+                <span>🏥 博雅口腔供应商</span>
+            </div>
+            <div class="cart-item">
+                <div class="cart-checkbox"><input type="checkbox" checked></div>
+                <div class="cart-img">💉</div>
+                <div class="cart-info">
+                    <div class="cart-name">一次性口腔检查包（10套装）</div>
+                    <div class="cart-price">¥128.00</div>
+                    <div class="quantity-control">
+                        <button class="quantity-btn">-</button>
+                        <span class="quantity-num">2</span>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <span class="cart-delete" onclick="alert('删除商品')">删除</span>
+            </div>
+            <div class="cart-item">
+                <div class="cart-checkbox"><input type="checkbox" checked></div>
+                <div class="cart-img">🦷</div>
+                <div class="cart-info">
+                    <div class="cart-name">种植体 基台 愈合基台套装</div>
+                    <div class="cart-price">¥2,680.00</div>
+                    <div class="quantity-control">
+                        <button class="quantity-btn">-</button>
+                        <span class="quantity-num">1</span>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <span class="cart-delete" onclick="alert('删除商品')">删除</span>
+            </div>
+        </div>
+
+        <div class="cart-store">
+            <div class="cart-store-header">
+                <input type="checkbox" checked>
+                <span>🏥 医疗器械专营店</span>
+            </div>
+            <div class="cart-item">
+                <div class="cart-checkbox"><input type="checkbox" checked></div>
+                <div class="cart-img">💊</div>
+                <div class="cart-info">
+                    <div class="cart-name">碘甘油 口腔消毒剂 10ml</div>
+                    <div class="cart-price">¥18.00 × 5</div>
+                    <div class="quantity-control">
+                        <button class="quantity-btn">-</button>
+                        <span class="quantity-num">5</span>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <span class="cart-delete" onclick="alert('删除商品')">删除</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-footer">
+        <div class="cart-total">
+            合计（3件商品）：<strong>¥2,972.00</strong>
+        </div>
+        <button class="cart-checkout" onclick="alert('跳转结算页面')">去结算</button>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item active">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

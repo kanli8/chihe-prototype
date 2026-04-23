@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的简历 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .profile-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 25px 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        .name { font-size: 1.3rem; font-weight: 600; margin-bottom: 5px; }
+        .title { font-size: 0.95rem; opacity: 0.9; margin-bottom: 15px; }
+        .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .tag { padding: 4px 12px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.8rem; }
+
+        .section-card {
+            background: #fff;
+            margin: 15px;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .section-card h3 { font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .section-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .edit-btn {
+            padding: 6px 12px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .status-bar {
+            display: flex;
+            padding: 15px;
+            background: #fff;
+            gap: 15px;
+        }
+        .status-item { flex: 1; text-align: center; }
+        .status-value { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .status-label { font-size: 0.8rem; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="profile.html" class="header-back">‹</a>
+        <h1>我的简历</h1>
+        <button class="edit-btn" onclick="alert('编辑简历')">编辑</button>
+    </header>
+
+    <div class="profile-card">
+        <div class="avatar">👨‍⚕️</div>
+        <div class="name">张三</div>
+        <div class="title">口腔执业医师 · 5年经验</div>
+        <div class="tags">
+            <span class="tag">种植牙</span>
+            <span class="tag">正畸</span>
+            <span class="tag">全科</span>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-item">
+            <div class="status-value">12</div>
+            <div class="status-label">投递数</div>
+        </div>
+        <div class="status-item">
+            <div class="status-value">5</div>
+            <div class="status-label">面试邀请</div>
+        </div>
+        <div class="status-item">
+            <div class="status-value">3</div>
+            <div class="status-label">收藏数</div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h3>👤 基本信息</h3>
+        <p>
+            手机：138****8888<br>
+            学历：本科 · 口腔医学专业<br>
+            期望薪资：15-20K/月<br>
+            工作状态：在职 · 随时到岗
+        </p>
+    </div>
+
+    <div class="section-card">
+        <h3>💼 工作经历</h3>
+        <p>
+            <strong>口腔医生 | 博雅口腔门诊部</strong><br>
+            2021年 - 至今<br><br>
+            负责口腔常见病的诊断与治疗，擅长种植牙手术及正畸病例设计，年接诊量约2000例。
+        </p>
+    </div>
+
+    <div class="section-card">
+        <h3>🎓 教育背景</h3>
+        <p>
+            <strong>浙江大学医学院</strong><br>
+            口腔医学 · 本科<br>
+            2016年 - 2021年
+        </p>
+    </div>
+
+    <div class="section-card">
+        <h3>📜 证书资质</h3>
+        <p>
+            • 口腔执业医师资格证<br>
+            • 口腔种植学分证书<br>
+            • 口腔修复学培训证书
+        </p>
+    </div>
+
+    <div style="padding: 15px;">
+        <button class="btn btn-primary btn-block" onclick="alert('简历已刷新')">
+            刷新简历
+        </button>
+    </div>
+</body>
+</html>

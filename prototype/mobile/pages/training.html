@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>培训学院 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+        .header { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+
+        .banner {
+            margin: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: #fff;
+        }
+        .banner h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .banner p { font-size: 0.85rem; opacity: 0.9; }
+
+        .category-tabs {
+            display: flex;
+            padding: 15px;
+            gap: 10px;
+            overflow-x: auto;
+            background: #fff;
+        }
+        .category-tab {
+            padding: 8px 16px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+        .category-tab.active {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .course-list { padding: 0 15px 15px; }
+        .course-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .course-cover {
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .course-cover.two { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .course-cover.three { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .course-info { padding: 15px; }
+        .course-title { font-weight: 600; font-size: 1rem; margin-bottom: 8px; }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .course-progress {
+            margin-top: 10px;
+            height: 4px;
+            background: var(--bg-light);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .course-progress-bar {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>培训学院</h1>
+        <span style="font-size: 1.4rem;">🔍</span>
+    </header>
+
+    <div class="banner">
+        <h3>📚 学习中心</h3>
+        <p>医疗技术 · 经营管理 · 医保合规</p>
+    </div>
+
+    <div class="category-tabs">
+        <button class="category-tab active">全部</button>
+        <button class="category-tab">医疗技术</button>
+        <button class="category-tab">经营管理</button>
+        <button class="category-tab">医保合规</button>
+        <button class="category-tab">营销获客</button>
+    </div>
+
+    <div class="course-list">
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover">🎓</div>
+            <div class="course-info">
+                <div class="course-title">口腔种植技术实战班</div>
+                <div class="course-meta">
+                    <span>李明华 教授</span>
+                    <span>3.5小时 · 128人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 65%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover two">💰</div>
+            <div class="course-info">
+                <div class="course-title">门诊业绩增长训练营</div>
+                <div class="course-meta">
+                    <span>张伟 总监</span>
+                    <span>5小时 · 256人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 30%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover three">📋</div>
+            <div class="course-info">
+                <div class="course-title">医保合规与DIP/DRG改革</div>
+                <div class="course-meta">
+                    <span>王芳 主任</span>
+                    <span>2小时 · 89人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover">🔧</div>
+            <div class="course-info">
+                <div class="course-title">根管治疗规范化操作</div>
+                <div class="course-meta">
+                    <span>陈刚 博士</span>
+                    <span>4小时 · 167人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item active">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

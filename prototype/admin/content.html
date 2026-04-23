@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容管理 - 齿合平台后台</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 220px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+        .logo {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .logo h1 { font-size: 1.3rem; margin: 0; }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .nav-item.active { background: rgba(59, 130, 246, 0.3); color: #fff; border-left: 3px solid #3b82f6; }
+        .nav-item .icon { font-size: 1.2rem; margin-right: 12px; width: 24px; text-align: center; }
+        .nav-item .badge { margin-left: auto; background: #ef4444; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; }
+        .nav-item .sub { margin-left: 36px; font-size: 0.8rem; opacity: 0.7; }
+
+        .main { margin-left: 220px; min-height: 100vh; }
+
+        .topbar {
+            background: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 15px; }
+        .breadcrumb { color: #6b7280; font-size: 0.9rem; }
+        .topbar-right { display: flex; align-items: center; gap: 20px; }
+        .topbar-icon { font-size: 1.3rem; cursor: pointer; }
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .content { padding: 30px; }
+        .page-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; color: #1f2937; }
+
+        .tab-bar {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 5px;
+            border-radius: 8px;
+            width: fit-content;
+        }
+        .tab-item {
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+        .tab-item.active { background: #3b82f6; color: #fff; }
+        .tab-item:hover:not(.active) { background: #f3f4f6; }
+
+        .table-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .table-header h3 { font-size: 1rem; font-weight: 600; }
+        .table-actions { display: flex; gap: 10px; }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            border: none;
+        }
+        .btn-primary { background: #3b82f6; color: #fff; }
+        .btn-outline { background: #fff; border: 1px solid #e5e7eb; }
+        .btn:hover { opacity: 0.9; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        th { background: #f9fafb; font-weight: 600; font-size: 0.85rem; color: #6b7280; }
+        td { font-size: 0.9rem; }
+        tr:hover { background: #f9fafb; }
+
+        .thumb {
+            width: 60px;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .status-tag {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .status-tag.success { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .status-tag.warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+        .status-tag.danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+        .action-btns { display: flex; gap: 8px; }
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: none;
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .action-btn:hover { background: #e5e7eb; }
+        .action-btn.danger { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>🦷 齿合平台</h1>
+        </div>
+
+        <a class="nav-item" onclick="location.href='index.html'">
+            <span class="icon">📊</span>
+            <span>数据看板</span>
+        </a>
+        <a class="nav-item active">
+            <span class="icon">📦</span>
+            <span>内容管理</span>
+        </a>
+        <div class="nav-item" style="padding-left: 36px; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+            课程/商品/专家/加盟
+        </div>
+        <a class="nav-item">
+            <span class="icon">🏥</span>
+            <span>门诊审核</span>
+            <span class="badge">3</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">👥</span>
+            <span>用户管理</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">🤖</span>
+            <span>AI知识库</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">💰</span>
+            <span>订单与财务</span>
+        </a>
+        <a class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>系统设置</span>
+        </a>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <span class="breadcrumb">首页 / 内容管理</span>
+            </div>
+            <div class="topbar-right">
+                <div class="user-avatar">管</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1 class="page-title">内容管理</h1>
+
+            <div class="tab-bar">
+                <div class="tab-item active">培训课程</div>
+                <div class="tab-item">商品管理</div>
+                <div class="tab-item">专家管理</div>
+                <div class="tab-item">加盟方案</div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h3>📚 培训课程列表</h3>
+                    <div class="table-actions">
+                        <button class="btn btn-outline">筛选</button>
+                        <button class="btn btn-primary">+ 新增课程</button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>课程名称</th>
+                            <th>分类</th>
+                            <th>讲师</th>
+                            <th>价格</th>
+                            <th>学习人数</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>口腔种植技术实战班</td>
+                            <td>医疗技术</td>
+                            <td>李明华</td>
+                            <td>¥299</td>
+                            <td>128</td>
+                            <td><span class="status-tag success">已上线</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="action-btn">编辑</button>
+                                    <button class="action-btn">下架</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>门诊业绩增长训练营</td>
+                            <td>经营管理</td>
+                            <td>张伟</td>
+                            <td>¥399</td>
+                            <td>256</td>
+                            <td><span class="status-tag success">已上线</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="action-btn">编辑</button>
+                                    <button class="action-btn">下架</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>医保合规与DIP/DRG改革</td>
+                            <td>医保合规</td>
+                            <td>王芳</td>
+                            <td>¥199</td>
+                            <td>89</td>
+                            <td><span class="status-tag success">已上线</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="action-btn">编辑</button>
+                                    <button class="action-btn">下架</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>根管治疗规范化操作</td>
+                            <td>医疗技术</td>
+                            <td>陈刚</td>
+                            <td>¥0</td>
+                            <td>167</td>
+                            <td><span class="status-tag warning">草稿</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="action-btn">编辑</button>
+                                    <button class="action-btn">发布</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

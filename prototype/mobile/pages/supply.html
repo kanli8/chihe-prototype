@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供应链集采 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+        .header { background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); }
+
+        .cart-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .cart-info { display: flex; align-items: center; gap: 8px; }
+        .cart-icon { position: relative; }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: #fff;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-total { font-weight: 600; color: #ef4444; }
+
+        .category-scroll {
+            display: flex;
+            padding: 15px;
+            gap: 12px;
+            overflow-x: auto;
+            background: #fff;
+        }
+        .category-item {
+            min-width: 70px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 8px;
+        }
+        .category-name { font-size: 0.8rem; color: var(--text-secondary); }
+        .category-item.active .category-icon { background: #ec4899; }
+        .category-item.active .category-name { color: #ec4899; font-weight: 500; }
+
+        .product-list { padding: 15px; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .product-img {
+            height: 120px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .product-info { padding: 12px; }
+        .product-name { font-size: 0.9rem; font-weight: 500; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-price { color: #ef4444; font-weight: 600; font-size: 1.1rem; }
+        .product-price span { font-size: 0.8rem; }
+        .product-sales { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+        .add-cart-btn {
+            width: 100%;
+            margin-top: 8px;
+            padding: 8px;
+            background: #ec4899;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>供应链集采</h1>
+        <span style="font-size: 1.4rem;" onclick="location.href='supply-cart.html'">🛒</span>
+    </header>
+
+    <div class="cart-bar">
+        <div class="cart-info">
+            <div class="cart-icon" onclick="location.href='supply-cart.html'">
+                🛒
+                <span class="cart-badge">3</span>
+            </div>
+            <span>购物车</span>
+        </div>
+        <div>
+            合计：<span class="cart-total">¥2,680.00</span>
+        </div>
+    </div>
+
+    <div class="category-scroll">
+        <div class="category-item active">
+            <div class="category-icon">🛒</div>
+            <div class="category-name">全部</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">💉</div>
+            <div class="category-name">器械耗材</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🔧</div>
+            <div class="category-name">设备</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🦷</div>
+            <div class="category-name">义齿</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">💊</div>
+            <div class="category-name">药品</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🧴</div>
+            <div class="category-name">消毒用品</div>
+        </div>
+    </div>
+
+    <div class="product-list">
+        <div class="product-grid">
+            <div class="product-card" onclick="location.href='supply-detail.html'">
+                <div class="product-img">💉</div>
+                <div class="product-info">
+                    <div class="product-name">一次性口腔检查包（10套装）</div>
+                    <div class="product-price"><span>¥</span>128.00</div>
+                    <div class="product-sales">月销 856</div>
+                    <button class="add-cart-btn" onclick="event.stopPropagation();alert('已加入购物车')">+ 加入购物车</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="location.href='supply-detail.html'">
+                <div class="product-img">🦷</div>
+                <div class="product-info">
+                    <div class="product-name">种植体 基台 愈合基台套装</div>
+                    <div class="product-price"><span>¥</span>2,680.00</div>
+                    <div class="product-sales">月销 234</div>
+                    <button class="add-cart-btn" onclick="event.stopPropagation();alert('已加入购物车')">+ 加入购物车</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="location.href='supply-detail.html'">
+                <div class="product-img">🔧</div>
+                <div class="product-info">
+                    <div class="product-name">牙科综合治疗台（经济型）</div>
+                    <div class="product-price"><span>¥</span>68,000.00</div>
+                    <div class="product-sales">月销 12</div>
+                    <button class="add-cart-btn" onclick="event.stopPropagation();alert('已加入购物车')">+ 加入购物车</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="location.href='supply-detail.html'">
+                <div class="product-img">💊</div>
+                <div class="product-info">
+                    <div class="product-name">碘甘油 口腔消毒剂 10ml</div>
+                    <div class="product-price"><span>¥</span>18.00</div>
+                    <div class="product-sales">月销 2,345</div>
+                    <button class="add-cart-btn" onclick="event.stopPropagation();alert('已加入购物车')">+ 加入购物车</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="location.href='supply-detail.html'">
+                <div class="product-img">🧴</div>
+                <div class="product-info">
+                    <div class="product-name">医用酒精消毒液 500ml</div>
+                    <div class="product-price"><span>¥</span>25.00</div>
+                    <div class="product-sales">月销 1,567</div>
+                    <button class="add-cart-btn" onclick="event.stopPropagation();alert('已加入购物车')">+ 加入购物车</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="location.href='supply-detail.html'">
+                <div class="product-img">🦷</div>
+                <div class="product-info">
+                    <div class="product-name">正畸托槽 金属自锁托槽</div>
+                    <div class="product-price"><span>¥</span>450.00</div>
+                    <div class="product-sales">月销 456</div>
+                    <button class="add-cart-btn" onclick="event.stopPropagation();alert('已加入购物车')">+ 加入购物车</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item active">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

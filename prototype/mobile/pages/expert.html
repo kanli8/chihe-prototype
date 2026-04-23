@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专家预约 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+        .header { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+
+        .expert-list { padding: 15px; }
+        .expert-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            cursor: pointer;
+        }
+        .expert-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .expert-info { flex: 1; }
+        .expert-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 3px; }
+        .expert-title { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .expert-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .expert-tag { padding: 3px 8px; background: var(--bg-light); border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); }
+        .expert-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        .expert-stat { font-size: 0.8rem; color: var(--text-secondary); }
+        .expert-stat strong { color: var(--text-primary); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>专家预约</h1>
+        <span style="font-size: 1.4rem;">🔍</span>
+    </header>
+
+    <div class="expert-list">
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar">👨‍⚕️</div>
+            <div class="expert-info">
+                <div class="expert-name">李建华 教授</div>
+                <div class="expert-title">主任医师 · 口腔种植专家</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">口腔种植</span>
+                    <span class="expert-tag">复杂病例</span>
+                    <span class="expert-tag">颌面外科</span>
+                </div>
+                <div class="expert-stats">
+                    <span class="expert-stat">预约 <strong>234</strong></span>
+                    <span class="expert-stat">好评 <strong>98%</strong></span>
+                    <span class="expert-stat">档期 <strong>紧张</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar" style="background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);">👩‍⚕️</div>
+            <div class="expert-info">
+                <div class="expert-name">王芳 主任</div>
+                <div class="expert-title">副主任医师 · 正畸专家</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">正畸</span>
+                    <span class="expert-tag">儿童早期矫治</span>
+                    <span class="expert-tag">隐形矫正</span>
+                </div>
+                <div class="expert-stats">
+                    <span class="expert-stat">预约 <strong>456</strong></span>
+                    <span class="expert-stat">好评 <strong>99%</strong></span>
+                    <span class="expert-stat">档期 <strong>充足</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);">👨‍🔬</div>
+            <div class="expert-info">
+                <div class="expert-name">张伟 副教授</div>
+                <div class="expert-title">副主任医师 · 牙体牙髓专家</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">根管治疗</span>
+                    <span class="expert-tag">显微治疗</span>
+                    <span class="expert-tag">牙周治疗</span>
+                </div>
+                <div class="expert-stats">
+                    <span class="expert-stat">预约 <strong>189</strong></span>
+                    <span class="expert-stat">好评 <strong>97%</strong></span>
+                    <span class="expert-stat">档期 <strong>一般</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);">👨‍⚕️</div>
+            <div class="expert-info">
+                <div class="expert-name">陈刚 教授</div>
+                <div class="expert-title">主任医师 · 颌面外科专家</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">种植牙</span>
+                    <span class="expert-tag">拔牙</span>
+                    <span class="expert-tag">口腔颌面</span>
+                </div>
+                <div class="expert-stats">
+                    <span class="expert-stat">预约 <strong>312</strong></span>
+                    <span class="expert-stat">好评 <strong>96%</strong></span>
+                    <span class="expert-stat">档期 <strong>紧张</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

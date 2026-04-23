@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身份切换 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .current-identity {
+            margin: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 15px;
+            color: #fff;
+        }
+        .current-identity h3 { font-size: 0.9rem; opacity: 0.9; margin-bottom: 10px; }
+        .identity-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .identity-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .identity-info { flex: 1; }
+        .identity-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 5px; }
+        .identity-role { font-size: 0.9rem; opacity: 0.9; }
+
+        .switch-section { padding: 0 15px 15px; }
+        .switch-section h3 { font-size: 1rem; margin-bottom: 12px; }
+        .switch-card {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .switch-card:active { transform: scale(0.98); }
+        .switch-card.active { border: 2px solid var(--primary); }
+        .switch-card-content {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            gap: 15px;
+        }
+        .switch-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .switch-info { flex: 1; }
+        .switch-name { font-weight: 600; font-size: 1rem; margin-bottom: 3px; }
+        .switch-desc { font-size: 0.85rem; color: var(--text-secondary); }
+        .switch-check {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .switch-card.active .switch-check {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .roles-section { padding: 0 15px 15px; }
+        .roles-section h3 { font-size: 1rem; margin-bottom: 12px; }
+        .roles-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .role-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .role-item:last-child { border-bottom: none; }
+        .role-icon { font-size: 1.5rem; margin-right: 12px; }
+        .role-name { flex: 1; font-size: 0.95rem; }
+        .role-check { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="profile.html" class="header-back">‹</a>
+        <h1>身份切换</h1>
+        <span></span>
+    </header>
+
+    <div class="current-identity">
+        <h3>当前身份</h3>
+        <div class="identity-card">
+            <div class="identity-icon">🏥</div>
+            <div class="identity-info">
+                <div class="identity-name">博雅口腔门诊部</div>
+                <div class="identity-role">门诊管理者</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="switch-section">
+        <h3>切换至</h3>
+
+        <div class="switch-card active">
+            <div class="switch-card-content" onclick="selectIdentity(this)">
+                <div class="switch-icon" style="background: rgba(16, 185, 129, 0.1);">🏥</div>
+                <div class="switch-info">
+                    <div class="switch-name">门诊身份</div>
+                    <div class="switch-desc">管理门诊、招聘人才、采购物资</div>
+                </div>
+                <div class="switch-check">✓</div>
+            </div>
+            <div class="roles-card" style="border-top: 1px solid var(--border-color); margin: 0 15px 15px; padding: 0;">
+                <div class="role-item">
+                    <span class="role-icon">👔</span>
+                    <span class="role-name">管理者</span>
+                    <span class="role-check">✓</span>
+                </div>
+                <div class="role-item">
+                    <span class="role-icon">👩‍⚕️</span>
+                    <span class="role-name">咨询师</span>
+                    <span></span>
+                </div>
+                <div class="role-item">
+                    <span class="role-icon">👨‍🔧</span>
+                    <span class="role-name">护士</span>
+                    <span></span>
+                </div>
+                <div class="role-item">
+                    <span class="role-icon">👨‍⚕️</span>
+                    <span class="role-name">医生</span>
+                    <span></span>
+                </div>
+                <div class="role-item">
+                    <span class="role-icon">👩‍💼</span>
+                    <span class="role-name">前台</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="switch-card" style="margin-top: 15px;">
+            <div class="switch-card-content" onclick="selectIdentity(this)">
+                <div class="switch-icon" style="background: rgba(59, 130, 246, 0.1);">👤</div>
+                <div class="switch-info">
+                    <div class="switch-name">个人身份</div>
+                    <div class="switch-desc">求职找工作、学习课程、合作加盟</div>
+                </div>
+                <div class="switch-check"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 15px;">
+        <button class="btn btn-primary btn-block" onclick="alert('身份切换成功！')">
+            确认切换
+        </button>
+    </div>
+
+    <script>
+        function selectIdentity(el) {
+            document.querySelectorAll('.switch-card').forEach(card => {
+                card.classList.remove('active');
+                card.querySelector('.switch-check').textContent = '';
+            });
+            el.closest('.switch-card').classList.add('active');
+            el.querySelector('.switch-check').textContent = '✓';
+        }
+    </script>
+</body>
+</html>

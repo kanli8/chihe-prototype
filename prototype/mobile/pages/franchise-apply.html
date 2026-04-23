@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申请加盟 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .hero-banner {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: #fff;
+            text-align: center;
+        }
+        .hero-banner h2 { font-size: 1.3rem; margin-bottom: 10px; }
+        .hero-banner .price { font-size: 2rem; font-weight: 700; margin: 15px 0; }
+        .hero-banner .price span { font-size: 1rem; }
+
+        .form-section { padding: 15px; }
+        .form-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .form-card h3 { font-size: 1rem; margin-bottom: 15px; }
+        .form-row { margin-bottom: 15px; }
+        .form-row:last-child { margin-bottom: 0; }
+        .form-label { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; display: block; }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #fff;
+        }
+        .form-textarea { resize: none; min-height: 80px; }
+
+        .agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .agreement input { margin-top: 3px; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: #fff; color: var(--text-primary);">
+        <a href="franchise.html" class="header-back">‹</a>
+        <h1>申请加盟</h1>
+        <span></span>
+    </header>
+
+    <div class="hero-banner">
+        <h2>齿合轻加盟计划</h2>
+        <p>零距离拥抱数字化口腔新时代</p>
+        <div class="price">¥20,000 <span>/ 年起</span></div>
+        <p>+ 1% 营业额度管理费</p>
+    </div>
+
+    <div class="form-section">
+        <div class="form-card">
+            <h3>🏥 门诊信息</h3>
+            <div class="form-row">
+                <label class="form-label">门诊名称</label>
+                <input type="text" class="form-input" placeholder="请输入门诊名称">
+            </div>
+            <div class="form-row">
+                <label class="form-label">所在城市</label>
+                <select class="form-select">
+                    <option>请选择城市</option>
+                    <option>杭州市</option>
+                    <option>宁波市</option>
+                    <option>温州市</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label class="form-label">详细地址</label>
+                <input type="text" class="form-input" placeholder="请输入详细地址">
+            </div>
+            <div class="form-row">
+                <label class="form-label">牙椅数量</label>
+                <select class="form-select">
+                    <option>请选择</option>
+                    <option>1-5台</option>
+                    <option>6-10台</option>
+                    <option>11-20台</option>
+                    <option>20台以上</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>👤 联系人信息</h3>
+            <div class="form-row">
+                <label class="form-label">联系人姓名</label>
+                <input type="text" class="form-input" placeholder="请输入联系人姓名">
+            </div>
+            <div class="form-row">
+                <label class="form-label">手机号码</label>
+                <input type="tel" class="form-input" placeholder="请输入手机号码">
+            </div>
+            <div class="form-row">
+                <label class="form-label">微信号（选填）</label>
+                <input type="text" class="form-input" placeholder="方便客服联系您">
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3>💬 补充说明</h3>
+            <div class="form-row">
+                <textarea class="form-textarea" placeholder="请描述您的需求或问题（选填）"></textarea>
+            </div>
+        </div>
+
+        <div class="agreement">
+            <input type="checkbox" id="agreement">
+            <label for="agreement">我已阅读并同意<a href="#" style="color: var(--primary);">《加盟服务协议》</a>和<a href="#" style="color: var(--primary);">《隐私政策》</a></label>
+        </div>
+
+        <button class="btn-submit" onclick="alert('申请提交成功！我们将尽快与您联系。')">
+            提交申请
+        </button>
+    </div>
+</body>
+</html>

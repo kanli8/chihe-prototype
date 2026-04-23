@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加盟赋能 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+        .header { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); }
+
+        .hero-banner {
+            margin: 15px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            border-radius: 16px;
+            color: #fff;
+            text-align: center;
+        }
+        .hero-banner .icon { font-size: 4rem; margin-bottom: 15px; }
+        .hero-banner h2 { font-size: 1.5rem; margin-bottom: 10px; }
+        .hero-banner p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 20px; }
+        .hero-banner .price { font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
+        .hero-banner .price span { font-size: 1rem; }
+        .hero-banner .sub { font-size: 0.85rem; opacity: 0.8; }
+
+        .benefits-section { padding: 0 15px 15px; }
+        .benefits-section h3 { font-size: 1rem; margin-bottom: 12px; }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .benefit-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+        .benefit-icon { font-size: 2rem; margin-bottom: 8px; }
+        .benefit-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 5px; }
+        .benefit-desc { font-size: 0.8rem; color: var(--text-secondary); }
+
+        .cases-section { padding: 0 15px 15px; }
+        .cases-section h3 { font-size: 1rem; margin-bottom: 12px; }
+        .case-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .case-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .case-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .case-info .name { font-weight: 600; font-size: 0.95rem; }
+        .case-info .time { font-size: 0.8rem; color: var(--text-muted); }
+        .case-content { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .case-result {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>加盟赋能</h1>
+        <span style="font-size: 1.4rem;">📞</span>
+    </header>
+
+    <div class="hero-banner">
+        <div class="icon">🔐</div>
+        <h2>齿合轻加盟计划</h2>
+        <p>零距离拥抱数字化口腔新时代</p>
+        <div class="price">¥20,000 <span>/ 年起</span></div>
+        <div class="sub">+ 1% 营业额度管理费</div>
+        <button class="btn btn-primary btn-block mt-15" onclick="location.href='franchise-apply.html'">立即申请加盟</button>
+    </div>
+
+    <div class="benefits-section">
+        <h3>🎁 加盟权益</h3>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">📱</div>
+                <div class="benefit-title">小程序免费用</div>
+                <div class="benefit-desc">价值3000元/年</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📚</div>
+                <div class="benefit-title">培训免费学</div>
+                <div class="benefit-desc">全年50+课程</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🤖</div>
+                <div class="benefit-title">AI工具赋能</div>
+                <div class="benefit-desc">智能客服+合规顾问</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📣</div>
+                <div class="benefit-title">营销获客支持</div>
+                <div class="benefit-desc">活动模板+线索引流</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛒</div>
+                <div class="benefit-title">供应链优惠</div>
+                <div class="benefit-desc">集采价更低</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">👨‍⚕️</div>
+                <div class="benefit-title">专家预约通道</div>
+                <div class="benefit-desc">优先预约名医</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cases-section">
+        <h3>🌟 成功案例</h3>
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-avatar">🏥</div>
+                <div class="case-info">
+                    <div class="name">博雅口腔</div>
+                    <div class="time">2025年6月加盟</div>
+                </div>
+            </div>
+            <div class="case-content">
+                加盟前月营业额约30万，加盟后通过平台营销工具和培训赋能，6个月内营业额提升至50万，线上获客占比从10%提升到40%。
+            </div>
+            <div class="case-result">
+                ✅ 6个月回本，当前月营业额稳定在50万+
+            </div>
+        </div>
+
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-avatar">🦷</div>
+                <div class="case-info">
+                    <div class="name">牙博士口腔</div>
+                    <div class="time">2025年9月加盟</div>
+                </div>
+            </div>
+            <div class="case-content">
+                作为新开诊所，通过齿合平台的供应链集采，采购成本降低了25%。AI小齿客服有效减轻了前台工作压力，客户满意度提升。
+            </div>
+            <div class="case-result">
+                ✅ 首年获客成本降低40%，客户满意度98%
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

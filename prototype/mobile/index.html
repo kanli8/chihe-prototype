@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>齿合平台 - 移动端</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f5f5f5; }
+        .redirect-box {
+            text-align: center;
+            padding: 60px 30px;
+        }
+        .redirect-box .icon { font-size: 4rem; margin-bottom: 20px; }
+        .redirect-box h2 { font-size: 1.3rem; margin-bottom: 10px; }
+        .redirect-box p { color: var(--text-secondary); margin-bottom: 30px; }
+        .btn-entry {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html" class="header-back">‹</a>
+        <h1>齿合平台</h1>
+        <span></span>
+    </header>
+
+    <div class="redirect-box">
+        <div class="icon">📱</div>
+        <h2>移动端 H5 原型</h2>
+        <p>小程序风格演示 · 门诊/个人双身份</p>
+
+        <a href="pages/login.html" class="btn-entry">📝 登录/注册</a>
+        <a href="pages/home.html" class="btn-entry">🏠 首页（门诊管理）</a>
+        <a href="pages/home.html?role=personal" class="btn-entry">👤 首页（个人用户）</a>
+    </div>
+
+    <div style="padding: 20px;">
+        <h3 style="margin-bottom: 15px;">📱 功能模块</h3>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/talent.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">👥</span>
+                <div>
+                    <div style="font-weight: 600;">人才市场</div>
+                    <div class="card-desc">职位发布/简历库/聊天/面试邀约</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/training.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">📚</span>
+                <div>
+                    <div style="font-weight: 600;">培训学院</div>
+                    <div class="card-desc">课程学习/进度追踪/收藏</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/marketing.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">📣</span>
+                <div>
+                    <div style="font-weight: 600;">智能获客</div>
+                    <div class="card-desc">活动模板/线索管理/营销工具</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/supply.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">🛒</span>
+                <div>
+                    <div style="font-weight: 600;">供应链集采</div>
+                    <div class="card-desc">商品浏览/购物车/订单管理</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/expert.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">🏆</span>
+                <div>
+                    <div style="font-weight: 600;">专家预约</div>
+                    <div class="card-desc">专家库/档期/预约申请</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/franchise.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">🔐</span>
+                <div>
+                    <div style="font-weight: 600;">加盟赋能</div>
+                    <div class="card-desc">方案展示/加盟申请/进度查询</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/ai-xiaochi.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">🤖</span>
+                <div>
+                    <div style="font-weight: 600;">AI小齿</div>
+                    <div class="card-desc">智能客服/场景入口/转人工</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="cursor: pointer;" onclick="location.href='pages/ai-yixiaobao.html'">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 2rem;">📋</span>
+                <div>
+                    <div style="font-weight: 600;">AI医小宝</div>
+                    <div class="card-desc">医保合规问答/历史记录</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

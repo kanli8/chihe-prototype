@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人才市场 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        /* 子导航 */
+        .sub-nav {
+            display: flex;
+            gap: 20px;
+            padding: 12px 15px;
+            background: #fff;
+            overflow-x: auto;
+        }
+        .sub-nav a {
+            white-space: nowrap;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+        .sub-nav a.active {
+            color: #10b981;
+            border-bottom-color: #10b981;
+        }
+
+        /* 搜索筛选 */
+        .filter-bar {
+            padding: 10px 15px;
+            background: #fff;
+            display: flex;
+            gap: 10px;
+        }
+        .filter-bar select, .filter-bar input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .filter-bar input { flex: 1; }
+
+        /* 职位卡片 */
+        .job-list { padding: 15px; }
+        .job-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .job-card:active { transform: scale(0.98); }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .job-title { font-weight: 600; font-size: 1.05rem; color: var(--text-primary); }
+        .job-salary { color: #ef4444; font-weight: 600; font-size: 1.1rem; }
+        .job-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+        .job-tag {
+            padding: 3px 8px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .job-company {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        .job-company-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .job-company-info .name { font-weight: 500; font-size: 0.9rem; }
+        .job-company-info .meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+        /* 浮动按钮 */
+        .fab {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>人才市场</h1>
+        <span style="font-size: 1.4rem;">🔍</span>
+    </header>
+
+    <div class="sub-nav">
+        <a href="talent.html" class="active">职位列表</a>
+        <a href="talent-resume.html">简历库</a>
+        <a href="talent-chat.html">消息</a>
+        <a href="talent-interview.html">面试</a>
+    </div>
+
+    <div class="filter-bar">
+        <select>
+            <option>全部岗位</option>
+            <option>口腔医生</option>
+            <option>护士</option>
+            <option>咨询师</option>
+            <option>前台</option>
+            <option>管理者</option>
+        </select>
+        <select>
+            <option>薪资不限</option>
+            <option>5k以下</option>
+            <option>5k-10k</option>
+            <option>10k-20k</option>
+            <option>20k以上</option>
+        </select>
+        <input type="text" placeholder="搜索职位/公司...">
+    </div>
+
+    <div class="job-list">
+        <div class="job-card" onclick="location.href='talent-detail.html'">
+            <div class="job-header">
+                <span class="job-title">口腔执业医生</span>
+                <span class="job-salary">15-25K</span>
+            </div>
+            <div class="job-tags">
+                <span class="job-tag">五险一金</span>
+                <span class="job-tag">包吃住</span>
+                <span class="job-tag">年终奖</span>
+                <span class="job-tag">3年以上</span>
+            </div>
+            <div class="job-company">
+                <div class="job-company-icon">🦷</div>
+                <div class="job-company-info">
+                    <div class="name">博雅口腔门诊部</div>
+                    <div class="meta">江干区 · 5-10年 · 大专</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card" onclick="location.href='talent-detail.html'">
+            <div class="job-header">
+                <span class="job-title">口腔护士</span>
+                <span class="job-salary">6-10K</span>
+            </div>
+            <div class="job-tags">
+                <span class="job-tag">五险</span>
+                <span class="job-tag">餐补</span>
+                <span class="job-tag">1-3年</span>
+            </div>
+            <div class="job-company">
+                <div class="job-company-icon">🏥</div>
+                <div class="job-company-info">
+                    <div class="name">瑞尔口腔医院</div>
+                    <div class="meta">西湖区 · 1-3年 · 中专</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card" onclick="location.href='talent-detail.html'">
+            <div class="job-header">
+                <span class="job-title">口腔咨询师</span>
+                <span class="job-salary">10-18K</span>
+            </div>
+            <div class="job-tags">
+                <span class="job-tag">提成</span>
+                <span class="job-tag">绩效</span>
+                <span class="job-tag">2年以上</span>
+            </div>
+            <div class="job-company">
+                <div class="job-company-icon">✨</div>
+                <div class="job-company-info">
+                    <div class="name">美奥口腔诊所</div>
+                    <div class="meta">滨江区 · 2-5年 · 大专</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card" onclick="location.href='talent-detail.html'">
+            <div class="job-header">
+                <span class="job-title">门诊前台接待</span>
+                <span class="job-salary">4-6K</span>
+            </div>
+            <div class="job-tags">
+                <span class="job-tag">五险</span>
+                <span class="job-tag">形象气质佳</span>
+            </div>
+            <div class="job-company">
+                <div class="job-company-icon">👤</div>
+                <div class="job-company-info">
+                    <div class="name">牙博士口腔</div>
+                    <div class="meta">拱墅区 · 经验不限 · 高中</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card" onclick="location.href='talent-detail.html'">
+            <div class="job-header">
+                <span class="job-title">口腔门诊主任</span>
+                <span class="job-salary">25-40K</span>
+            </div>
+            <div class="job-tags">
+                <span class="job-tag">股权激励</span>
+                <span class="job-tag">管理经验</span>
+                <span class="job-tag">5年以上</span>
+            </div>
+            <div class="job-company">
+                <div class="job-company-icon">🏆</div>
+                <div class="job-company-info">
+                    <div class="name">通策医疗连锁</div>
+                    <div class="meta">上城区 · 5-10年 · 本科</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab" onclick="location.href='talent-post.html'">+</div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item active">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>
