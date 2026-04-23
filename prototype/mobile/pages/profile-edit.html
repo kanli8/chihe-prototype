@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑资料 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+
+        .form-section { padding: 15px; }
+        .form-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .form-card h3 { font-size: 1rem; margin-bottom: 15px; }
+        .form-row { margin-bottom: 15px; }
+        .form-row:last-child { margin-bottom: 0; }
+        .form-label { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; display: block; }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #fff;
+        }
+        .form-input:focus { border-color: var(--primary); }
+
+        .avatar-upload {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .avatar-preview {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+        }
+        .avatar-btn {
+            padding: 8px 15px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn-save {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="profile.html" class="header-back">‹</a>
+        <h1>编辑资料</h1>
+        <span></span>
+    </header>
+
+    <div class="form-section">
+        <div class="form-card">
+            <h3>👤 基本信息</h3>
+            <div class="form-row">
+                <label class="form-label">头像</label>
+                <div class="avatar-upload">
+                    <div class="avatar-preview">🏥</div>
+                    <button class="avatar-btn">更换头像</button>
+                </div>
+            </div>
+            <div class="form-row">
+                <label class="form-label">门诊名称</label>
+                <input type="text" class="form-input" value="博雅口腔门诊部">
+            </div>
+            <div class="form-row">
+                <label class="form-label">联系人</label>
+                <input type="text" class="form-input" value="张三">
+            </div>
+            <div class="form-row">
+                <label class="form-label">联系电话</label>
+                <input type="tel" class="form-input" value="138****8888">
+            </div>
+            <div class="form-row">
+                <label class="form-label">所在城市</label>
+                <select class="form-select">
+                    <option>浙江省杭州市江干区</option>
+                    <option>浙江省宁波市</option>
+                    <option>浙江省温州市</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label class="form-label">详细地址</label>
+                <input type="text" class="form-input" value="钱江路123号博雅大厦3楼">
+            </div>
+        </div>
+
+        <button class="btn-save" onclick="alert('保存成功！')">保存修改</button>
+    </div>
+</body>
+</html>

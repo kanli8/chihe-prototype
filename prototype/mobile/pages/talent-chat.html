@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: #f0f2f5; display: flex; flex-direction: column; height: 100vh; }
+        .header { background: linear-gradient(135deg, #10b981 0%, #059669 100%); flex-shrink: 0; }
+
+        .chat-list { flex: 1; overflow-y: auto; padding: 15px; }
+        .chat-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-right: 12px;
+        }
+        .chat-info { flex: 1; }
+        .chat-name { font-weight: 600; margin-bottom: 3px; }
+        .chat-preview { font-size: 0.85rem; color: var(--text-secondary); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+        .chat-meta { text-align: right; }
+        .chat-time { font-size: 0.75rem; color: var(--text-muted); }
+        .chat-unread { background: #ef4444; color: #fff; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; margin-top: 5px; margin-left: auto; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-state .icon { font-size: 4rem; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>聊天</h1>
+        <span style="font-size: 1.4rem;">📝</span>
+    </header>
+
+    <div class="chat-list">
+        <div class="chat-item" onclick="alert('打开聊天窗口')">
+            <div class="chat-avatar">王</div>
+            <div class="chat-info">
+                <div class="chat-name">王医生（已脱敏）</div>
+                <div class="chat-preview">您好，看到贵门诊发布的口腔医生职位...</div>
+            </div>
+            <div class="chat-meta">
+                <div class="chat-time">10:30</div>
+                <div class="chat-unread">2</div>
+            </div>
+        </div>
+
+        <div class="chat-item" onclick="alert('打开聊天窗口')">
+            <div class="chat-avatar" style="background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);">李</div>
+            <div class="chat-info">
+                <div class="chat-name">李护士（已脱敏）</div>
+                <div class="chat-preview">请问护士岗位还招人吗？</div>
+            </div>
+            <div class="chat-meta">
+                <div class="chat-time">昨天</div>
+                <div class="chat-unread">1</div>
+            </div>
+        </div>
+
+        <div class="chat-item" onclick="alert('打开聊天窗口')">
+            <div class="chat-avatar" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);">张</div>
+            <div class="chat-info">
+                <div class="chat-name">张咨询（已脱敏）</div>
+                <div class="chat-preview">想了解一下薪资待遇情况</div>
+            </div>
+            <div class="chat-meta">
+                <div class="chat-time">4-20</div>
+                <div class="chat-unread">0</div>
+            </div>
+        </div>
+
+        <div class="chat-item" onclick="alert('打开聊天窗口')">
+            <div class="chat-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);">陈</div>
+            <div class="chat-info">
+                <div class="chat-name">陈主任（已脱敏）</div>
+                <div class="chat-preview">感谢贵门诊的面试邀请，已确认参加</div>
+            </div>
+            <div class="chat-meta">
+                <div class="chat-time">4-19</div>
+                <div class="chat-unread">0</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item active">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>

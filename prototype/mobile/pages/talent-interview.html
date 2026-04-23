@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试邀约 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        body { background: var(--bg-light); }
+        .header { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+
+        .interview-list { padding: 15px; }
+        .interview-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .interview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .interview-position { font-weight: 600; font-size: 1.05rem; }
+        .interview-status { font-size: 0.85rem; }
+        .interview-status.pending { color: var(--warning); }
+        .interview-status.accepted { color: var(--success); }
+        .interview-status.declined { color: var(--text-muted); }
+
+        .interview-info {
+            padding: 12px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .interview-info-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .interview-info-row:last-child { margin-bottom: 0; }
+        .interview-info-label { width: 70px; color: var(--text-secondary); }
+        .interview-info-value { flex: 1; }
+
+        .interview-actions { display: flex; gap: 10px; }
+        .interview-actions .btn { flex: 1; padding: 10px; border-radius: 8px; border: none; font-size: 0.9rem; cursor: pointer; }
+        .interview-actions .btn-accept { background: var(--success); color: #fff; }
+        .interview-actions .btn-decline { background: var(--bg-light); color: var(--text-secondary); }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-state .icon { font-size: 4rem; margin-bottom: 15px; }
+        .empty-state h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .empty-state p { color: var(--text-secondary); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="header-back">‹</a>
+        <h1>面试邀约</h1>
+        <span></span>
+    </header>
+
+    <div class="interview-list">
+        <div class="interview-card">
+            <div class="interview-header">
+                <span class="interview-position">口腔执业医生</span>
+                <span class="interview-status pending">待确认</span>
+            </div>
+            <div class="interview-info">
+                <div class="interview-info-row">
+                    <span class="interview-info-label">候选人</span>
+                    <span class="interview-info-value">王医生（已脱敏）</span>
+                </div>
+                <div class="interview-info-row">
+                    <span class="interview-info-label">时  间</span>
+                    <span class="interview-info-value">2026-04-25 14:00</span>
+                </div>
+                <div class="interview-info-row">
+                    <span class="interview-info-label">地  点</span>
+                    <span class="interview-info-value">博雅口腔门诊部 3楼会议室</span>
+                </div>
+            </div>
+            <div class="interview-actions">
+                <button class="btn btn-accept" onclick="alert('已接受面试邀约')">接受</button>
+                <button class="btn btn-decline" onclick="alert('已拒绝面试邀约')">婉拒</button>
+            </div>
+        </div>
+
+        <div class="interview-card">
+            <div class="interview-header">
+                <span class="interview-position">口腔护士</span>
+                <span class="interview-status accepted">已接受</span>
+            </div>
+            <div class="interview-info">
+                <div class="interview-info-row">
+                    <span class="interview-info-label">候选人</span>
+                    <span class="interview-info-value">李护士（已脱敏）</span>
+                </div>
+                <div class="interview-info-row">
+                    <span class="interview-info-label">时  间</span>
+                    <span class="interview-info-value">2026-04-26 10:00</span>
+                </div>
+                <div class="interview-info-row">
+                    <span class="interview-info-label">地  点</span>
+                    <span class="interview-info-value">博雅口腔门诊部 3楼会议室</span>
+                </div>
+            </div>
+            <div class="interview-actions">
+                <button class="btn btn-accept" onclick="alert('已联系候选人')">联系候选人</button>
+                <button class="btn btn-decline" onclick="alert('已取消面试')">取消</button>
+            </div>
+        </div>
+
+        <div class="interview-card">
+            <div class="interview-header">
+                <span class="interview-position">口腔咨询师</span>
+                <span class="interview-status declined">已拒绝</span>
+            </div>
+            <div class="interview-info">
+                <div class="interview-info-row">
+                    <span class="interview-info-label">候选人</span>
+                    <span class="interview-info-value">张咨询（已脱敏）</span>
+                </div>
+                <div class="interview-info-row">
+                    <span class="interview-info-label">时  间</span>
+                    <span class="interview-info-value">2026-04-20 15:00</span>
+                </div>
+                <div class="interview-info-row">
+                    <span class="interview-info-label">原  因</span>
+                    <span class="interview-info-value">候选人时间冲突</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">首页</span>
+        </a>
+        <a href="talent.html" class="tab-item active">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">人才</span>
+        </a>
+        <a href="training.html" class="tab-item">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">培训</span>
+        </a>
+        <a href="marketing.html" class="tab-item">
+            <span class="tab-icon">📣</span>
+            <span class="tab-label">获客</span>
+        </a>
+        <a href="supply.html" class="tab-item">
+            <span class="tab-icon">🛒</span>
+            <span class="tab-label">集采</span>
+        </a>
+    </nav>
+</body>
+</html>
