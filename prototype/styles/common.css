@@ -2,18 +2,27 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* 引入主题变量 */
+@import './themes.css';
+
 :root {
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
+    /* 使用主题变量作为默认值 */
+    --primary: var(--theme-primary);
+    --primary-dark: var(--theme-primary-dark);
+    --bg-light: var(--theme-bg);
+    --text-primary: var(--theme-text);
+    --text-secondary: var(--theme-text-secondary);
+    --border-color: var(--theme-border);
+    --shadow: 0 2px 8px var(--theme-shadow);
+    --radius: var(--theme-radius);
+    --radius-lg: var(--theme-radius-lg);
+    --gradient: var(--theme-gradient);
+
+    /* 固定颜色 */
     --success: #10b981;
     --warning: #f59e0b;
     --danger: #ef4444;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
     --text-muted: #9ca3af;
-    --bg-light: #f3f4f6;
-    --border-color: #e5e7eb;
-    --shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 body {
@@ -24,7 +33,7 @@ body {
 
 /* 通用头部 */
 .header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    background: var(--gradient);
     color: #fff;
     padding: 15px 20px;
     position: sticky;
@@ -39,8 +48,8 @@ body {
 
 /* 通用卡片 */
 .card {
-    background: #fff;
-    border-radius: 12px;
+    background: var(--theme-bg-card);
+    border-radius: var(--radius);
     padding: 15px;
     margin: 15px;
     box-shadow: var(--shadow);

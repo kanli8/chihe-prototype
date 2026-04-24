@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="green">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>齿合平台 - 清新绿</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/theme-switcher.css">
+    <style>
+        body { background: var(--theme-bg); }
+        .page { padding-bottom: 60px; }
+        .hero {
+            background: var(--gradient);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .hero .icon { font-size: 4rem; margin-bottom: 15px; }
+        .hero h1 { font-size: 1.5rem; margin-bottom: 8px; }
+        .hero p { font-size: 0.9rem; opacity: 0.9; }
+        .entry-section { padding: 20px; }
+        .entry-section h3 { font-size: 1rem; margin-bottom: 15px; color: var(--theme-text); }
+        .entry-card {
+            background: var(--theme-bg-card);
+            border-radius: var(--radius);
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 8px var(--theme-shadow);
+        }
+        .entry-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        .entry-info { flex: 1; }
+        .entry-title { font-weight: 600; margin-bottom: 3px; color: var(--theme-text); }
+        .entry-desc { font-size: 0.85rem; color: var(--theme-text-secondary); }
+        .entry-arrow { color: var(--theme-text-secondary); font-size: 1.2rem; }
+        .back-btn {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 20px auto;
+            padding: 12px;
+            background: var(--theme-bg-card);
+            border: 2px solid var(--theme-primary);
+            border-radius: var(--radius);
+            color: var(--theme-primary);
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="hero">
+            <div class="icon">🌿</div>
+            <h1>清新绿 · 主题预览</h1>
+            <p>健康自然风 · 充满活力的绿色调</p>
+        </div>
+
+        <div class="entry-section">
+            <h3>📱 快速入口</h3>
+
+            <div class="entry-card" onclick="location.href='mobile/pages/home.html'">
+                <div class="entry-icon" style="background: rgba(16, 185, 129, 0.15);">🏠</div>
+                <div class="entry-info">
+                    <div class="entry-title">首页</div>
+                    <div class="entry-desc">进入移动端首页</div>
+                </div>
+                <span class="entry-arrow">›</span>
+            </div>
+
+            <div class="entry-card" onclick="location.href='mobile/pages/talent.html'">
+                <div class="entry-icon" style="background: rgba(16, 185, 129, 0.15);">👥</div>
+                <div class="entry-info">
+                    <div class="entry-title">人才市场</div>
+                    <div class="entry-desc">职位/简历/聊天</div>
+                </div>
+                <span class="entry-arrow">›</span>
+            </div>
+
+            <div class="entry-card" onclick="location.href='mobile/pages/supply.html'">
+                <div class="entry-icon" style="background: rgba(16, 185, 129, 0.15);">🛒</div>
+                <div class="entry-info">
+                    <div class="entry-title">供应链集采</div>
+                    <div class="entry-desc">商品/购物车/订单</div>
+                </div>
+                <span class="entry-arrow">›</span>
+            </div>
+
+            <div class="entry-card" onclick="location.href='admin/index.html'">
+                <div class="entry-icon" style="background: rgba(16, 185, 129, 0.15);">💻</div>
+                <div class="entry-info">
+                    <div class="entry-title">平台后台</div>
+                    <div class="entry-desc">数据看板/内容管理</div>
+                </div>
+                <span class="entry-arrow">›</span>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">← 返回主题选择页</a>
+    </div>
+
+    <script src="js/theme-switcher.js"></script>
+</body>
+</html>
