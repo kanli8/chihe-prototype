@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专家预约 - 大公司风格 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+            background: #f5f7fa;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .page-header {
+            background: #fff;
+            padding: 15px 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #e8e8e8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .page-header .back {
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+        .page-header h1 {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .page-header .action {
+            font-size: 1.2rem;
+            color: #1677ff;
+        }
+
+        /* 搜索栏 */
+        .search-bar {
+            margin: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .search-btn {
+            padding: 12px 20px;
+            background: #1677ff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* 筛选标签 */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 0 15px 15px;
+            overflow-x: auto;
+        }
+        .filter-tab {
+            padding: 8px 16px;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .filter-tab.active {
+            background: #1677ff;
+            color: #fff;
+            border-color: #1677ff;
+        }
+
+        /* 专家列表 */
+        .expert-list {
+            padding: 0 15px 20px;
+        }
+        .expert-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .expert-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1677ff, #0958d9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        .expert-info { flex: 1; }
+        .expert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .expert-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .expert-title-text {
+            font-size: 0.75rem;
+            color: #52c41a;
+            padding: 2px 8px;
+            background: rgba(82, 196, 26, 0.1);
+            border-radius: 4px;
+        }
+        .expert-dept {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .expert-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .expert-tag {
+            padding: 4px 10px;
+            background: #f5f7fa;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #666;
+        }
+        .expert-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .expert-stats {
+            display: flex;
+            gap: 20px;
+        }
+        .expert-stat {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        .expert-stat strong { color: #1677ff; }
+        .book-btn {
+            padding: 8px 20px;
+            background: #1677ff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* 底部导航 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 25px;
+            border-top: 1px solid #e8e8e8;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+        .bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            color: #999;
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+        .bottom-nav .nav-item.active { color: #1677ff; }
+        .bottom-nav .nav-item .icon { font-size: 1.3rem; }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="page-header">
+        <a href="home-bigtree.html" class="back">‹</a>
+        <h1>专家预约</h1>
+        <span class="action">🔍</span>
+    </header>
+
+    <!-- 搜索 -->
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="搜索专家姓名、科室">
+        <button class="search-btn">搜索</button>
+    </div>
+
+    <!-- 筛选 -->
+    <div class="filter-tabs">
+        <span class="filter-tab active">全部</span>
+        <span class="filter-tab">口腔种植</span>
+        <span class="filter-tab">正畸</span>
+        <span class="filter-tab">牙体牙髓</span>
+        <span class="filter-tab">颌面外科</span>
+        <span class="filter-tab">儿童口腔</span>
+    </div>
+
+    <!-- 专家列表 -->
+    <div class="expert-list">
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar">👨‍⚕️</div>
+            <div class="expert-info">
+                <div class="expert-header">
+                    <span class="expert-name">李建华</span>
+                    <span class="expert-title-text">可预约</span>
+                </div>
+                <div class="expert-dept">主任医师 · 口腔种植专家 · 10年经验</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">口腔种植</span>
+                    <span class="expert-tag">复杂病例</span>
+                    <span class="expert-tag">颌面外科</span>
+                </div>
+                <div class="expert-footer">
+                    <div class="expert-stats">
+                        <span class="expert-stat">预约 <strong>234</strong></span>
+                        <span class="expert-stat">好评 <strong>98%</strong></span>
+                    </div>
+                    <button class="book-btn">立即预约</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar" style="background: linear-gradient(135deg, #52c41a, #237804);">👩‍⚕️</div>
+            <div class="expert-info">
+                <div class="expert-header">
+                    <span class="expert-name">王芳</span>
+                    <span class="expert-title-text">可预约</span>
+                </div>
+                <div class="expert-dept">副主任医师 · 正畸专家 · 8年经验</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">正畸</span>
+                    <span class="expert-tag">儿童早期矫治</span>
+                    <span class="expert-tag">隐形矫正</span>
+                </div>
+                <div class="expert-footer">
+                    <div class="expert-stats">
+                        <span class="expert-stat">预约 <strong>456</strong></span>
+                        <span class="expert-stat">好评 <strong>99%</strong></span>
+                    </div>
+                    <button class="book-btn">立即预约</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar" style="background: linear-gradient(135deg, #faad14, #d48806);">👨‍🔬</div>
+            <div class="expert-info">
+                <div class="expert-header">
+                    <span class="expert-name">张伟</span>
+                    <span class="expert-title-text" style="color: #faad14; background: rgba(250, 173, 20, 0.1);">档期紧张</span>
+                </div>
+                <div class="expert-dept">副主任医师 · 牙体牙髓专家 · 12年经验</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">根管治疗</span>
+                    <span class="expert-tag">显微治疗</span>
+                    <span class="expert-tag">牙周治疗</span>
+                </div>
+                <div class="expert-footer">
+                    <div class="expert-stats">
+                        <span class="expert-stat">预约 <strong>189</strong></span>
+                        <span class="expert-stat">好评 <strong>97%</strong></span>
+                    </div>
+                    <button class="book-btn" style="background: #f0f0f0; color: #999;">已约满</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="expert-card" onclick="location.href='expert-detail.html'">
+            <div class="expert-avatar" style="background: linear-gradient(135deg, #ff4d4f, #cf1322);">👨‍⚕️</div>
+            <div class="expert-info">
+                <div class="expert-header">
+                    <span class="expert-name">陈刚</span>
+                    <span class="expert-title-text">可预约</span>
+                </div>
+                <div class="expert-dept">主任医师 · 颌面外科专家 · 15年经验</div>
+                <div class="expert-tags">
+                    <span class="expert-tag">种植牙</span>
+                    <span class="expert-tag">拔牙</span>
+                    <span class="expert-tag">口腔颌面</span>
+                </div>
+                <div class="expert-footer">
+                    <div class="expert-stats">
+                        <span class="expert-stat">预约 <strong>312</strong></span>
+                        <span class="expert-stat">好评 <strong>96%</strong></span>
+                    </div>
+                    <button class="book-btn">立即预约</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 90px;"></div>
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+        <a href="home-bigtree.html" class="nav-item">
+            <span class="icon">🏠</span>
+            <span>首页</span>
+        </a>
+        <a href="talent.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>人才</span>
+        </a>
+        <a href="training.html" class="nav-item">
+            <span class="icon">📚</span>
+            <span>培训</span>
+        </a>
+        <a href="marketing.html" class="nav-item">
+            <span class="icon">📣</span>
+            <span>获客</span>
+        </a>
+        <a href="supply.html" class="nav-item">
+            <span class="icon">🛒</span>
+            <span>集采</span>
+        </a>
+    </nav>
+</body>
+</html>

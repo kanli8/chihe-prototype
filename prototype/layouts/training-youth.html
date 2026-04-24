@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>培训学院 - 活泼年轻 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+            background: linear-gradient(180deg, #fff9f5 0%, #fff 100%);
+            color: #333;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            padding: 15px 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .page-header .back {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        .page-header h1 {
+            flex: 1;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* banner */
+        .cute-banner {
+            margin: 10px 18px;
+            padding: 22px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .cute-banner::after {
+            content: '📚';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+        .cute-banner h3 { font-size: 1.15rem; margin-bottom: 5px; }
+        .cute-banner p { font-size: 0.85rem; opacity: 0.9; }
+
+        /* 标签 */
+        .cute-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 15px 18px;
+            overflow-x: auto;
+        }
+        .cute-tab {
+            padding: 8px 18px;
+            background: #fff;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            color: #666;
+        }
+        .cute-tab.active {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: #fff;
+        }
+
+        /* 课程卡片 */
+        .course-list {
+            padding: 0 18px 20px;
+        }
+        .cute-course {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.1);
+            transition: transform 0.2s;
+        }
+        .cute-course:hover { transform: translateY(-3px); }
+        .cute-cover {
+            height: 130px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+        .cute-cover.two { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .cute-cover.three { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .cute-cover.four { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .cute-cover .tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: #666;
+        }
+        .cute-info {
+            padding: 15px;
+        }
+        .cute-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .cute-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 12px;
+        }
+        .cute-progress {
+            height: 6px;
+            background: #f5f5f5;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .cute-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+            border-radius: 3px;
+        }
+
+        .bottom-space { height: 90px; }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a href="home-youth.html" class="back">‹</a>
+        <h1>培训学院</h1>
+        <span style="font-size: 1.2rem;">🔍</span>
+    </header>
+
+    <div class="cute-banner">
+        <h3>📚 学习中心</h3>
+        <p>医疗技术 · 经营管理 · 医保合规</p>
+    </div>
+
+    <div class="cute-tabs">
+        <span class="cute-tab active">全部</span>
+        <span class="cute-tab">医疗技术</span>
+        <span class="cute-tab">经营管理</span>
+        <span class="cute-tab">医保合规</span>
+    </div>
+
+    <div class="course-list">
+        <div class="cute-course" onclick="location.href='training-detail.html'">
+            <div class="cute-cover">
+                🎓
+                <span class="tag">热门</span>
+            </div>
+            <div class="cute-info">
+                <div class="cute-title">口腔种植技术实战班</div>
+                <div class="cute-meta">
+                    <span>李明华 教授</span>
+                    <span>3.5小时 · 128人</span>
+                </div>
+                <div class="cute-progress">
+                    <div class="cute-progress-bar" style="width: 65%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cute-course" onclick="location.href='training-detail.html'">
+            <div class="cute-cover two">
+                💰
+                <span class="tag">推荐</span>
+            </div>
+            <div class="cute-info">
+                <div class="cute-title">门诊业绩增长训练营</div>
+                <div class="cute-meta">
+                    <span>张伟 总监</span>
+                    <span>5小时 · 256人</span>
+                </div>
+                <div class="cute-progress">
+                    <div class="cute-progress-bar" style="width: 30%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cute-course" onclick="location.href='training-detail.html'">
+            <div class="cute-cover three">
+                📋
+            </div>
+            <div class="cute-info">
+                <div class="cute-title">医保合规与DIP/DRG改革</div>
+                <div class="cute-meta">
+                    <span>王芳 主任</span>
+                    <span>2小时 · 89人</span>
+                </div>
+                <div class="cute-progress">
+                    <div class="cute-progress-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cute-course" onclick="location.href='training-detail.html'">
+            <div class="cute-cover four">
+                🔧
+            </div>
+            <div class="cute-info">
+                <div class="cute-title">根管治疗规范化操作</div>
+                <div class="cute-meta">
+                    <span>陈刚 博士</span>
+                    <span>4小时 · 167人</span>
+                </div>
+                <div class="cute-progress">
+                    <div class="cute-progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-space"></div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 科技风格 - 齿合平台</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            max-width: 100%;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* 顶部装饰线 */
+        .top-line {
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7b2dff, #ff2d55, #00d4ff);
+            background-size: 300% 100%;
+            animation: gradientFlow 3s linear infinite;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        /* 头部 */
+        .header {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .header .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2dff 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header .time {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* 状态卡片 - 玻璃态 */
+        .glass-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            margin: 15px 20px;
+            padding: 20px;
+        }
+        .glass-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .glass-card .card-title {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .glass-card .card-badge {
+            padding: 4px 10px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: #00d4ff;
+        }
+
+        /* 用户状态 */
+        .user-status {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .user-status .avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2dff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+        .user-status .info h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .user-status .info p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+        /* 数据流 */
+        .data-stream {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .data-stream .data-block {
+            text-align: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+        }
+        .data-stream .data-block .num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7b2dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .data-stream .data-block .label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+        }
+
+        /* 快速入口 */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px;
+        }
+        .quick-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 18px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .quick-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-3px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .quick-item .icon {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .quick-item .name { font-size: 0.85rem; color: rgba(255,255,255,0.9); }
+        .quick-item .sub { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 3px; }
+
+        /* 模块列表 */
+        .module-list {
+            margin: 0 20px;
+        }
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .module-item:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(0, 212, 255, 0.2);
+        }
+        .module-item .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        .module-item .info { flex: 1; }
+        .module-item .info h4 { font-size: 1rem; margin-bottom: 4px; }
+        .module-item .info p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+        .module-item .arrow {
+            color: rgba(255,255,255,0.3);
+            font-size: 1.2rem;
+        }
+
+        /* AI助手 */
+        .ai-assistant {
+            margin: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 45, 255, 0.15));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 16px;
+            cursor: pointer;
+        }
+        .ai-assistant .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .ai-assistant .ai-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d4ff, #7b2dff);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .ai-assistant .ai-title { font-size: 1rem; }
+        .ai-assistant .ai-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+
+        /* 底部导航 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 25px;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+        .bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.65rem;
+            transition: color 0.3s;
+        }
+        .bottom-nav .nav-item.active { color: #00d4ff; }
+        .bottom-nav .nav-item .icon { font-size: 1.3rem; }
+    </style>
+</head>
+<body>
+    <!-- 顶部渐变线 -->
+    <div class="top-line"></div>
+
+    <!-- 头部 -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🦷</div>
+            <span>Chihe</span>
+        </div>
+        <div class="time" id="currentTime">00:00</div>
+    </header>
+
+    <!-- 用户状态 -->
+    <div class="glass-card">
+        <div class="user-status">
+            <div class="avatar">🏥</div>
+            <div class="info">
+                <h3>口腔门诊 · 管理者</h3>
+                <p>ID: CH20240315001 · 已认证</p>
+            </div>
+        </div>
+        <div class="data-stream">
+            <div class="data-block">
+                <div class="num">89</div>
+                <div class="label">线索数</div>
+            </div>
+            <div class="data-block">
+                <div class="num">12</div>
+                <div class="label">待面试</div>
+            </div>
+            <div class="data-block">
+                <div class="num">98%</div>
+                <div class="label">好评率</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 快速入口 -->
+    <div class="quick-grid">
+        <div class="quick-item" onclick="location.href='pages/talent.html'">
+            <div class="icon" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.1));">👥</div>
+            <div class="name">人才</div>
+            <div class="sub">招聘</div>
+        </div>
+        <div class="quick-item" onclick="location.href='pages/training.html'">
+            <div class="icon" style="background: linear-gradient(135deg, rgba(123, 45, 255, 0.2), rgba(123, 45, 255, 0.1));">🎓</div>
+            <div class="name">培训</div>
+            <div class="sub">学习</div>
+        </div>
+        <div class="quick-item" onclick="location.href='pages/marketing.html'">
+            <div class="icon" style="background: linear-gradient(135deg, rgba(255, 45, 85, 0.2), rgba(255, 45, 85, 0.1));">📣</div>
+            <div class="name">获客</div>
+            <div class="sub">营销</div>
+        </div>
+        <div class="quick-item" onclick="location.href='pages/supply.html'">
+            <div class="icon" style="background: linear-gradient(135deg, rgba(0, 255, 135, 0.2), rgba(0, 255, 135, 0.1));">🛒</div>
+            <div class="name">集采</div>
+            <div class="sub">供应链</div>
+        </div>
+    </div>
+
+    <!-- 功能模块 -->
+    <div class="module-list">
+        <div class="module-item" onclick="location.href='pages/expert.html'">
+            <div class="icon" style="background: linear-gradient(135deg, #00d4ff, #7b2dff);">🏆</div>
+            <div class="info">
+                <h4>专家预约</h4>
+                <p>预约名医 · 技术支持</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="module-item" onclick="location.href='pages/franchise.html'">
+            <div class="icon" style="background: linear-gradient(135deg, #ff2d55, #ff6b35);">🔐</div>
+            <div class="info">
+                <h4>加盟赋能</h4>
+                <p>轻加盟模式 · 2万开启事业</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="module-item" onclick="location.href='pages/supply.html'">
+            <div class="icon" style="background: linear-gradient(135deg, #00ff87, #00d4ff);">🛒</div>
+            <div class="info">
+                <h4>供应链集采</h4>
+                <p>器械耗材 · 设备采购</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+    </div>
+
+    <!-- AI助手 -->
+    <div class="ai-assistant" onclick="location.href='pages/ai-xiaochi.html'">
+        <div class="ai-header">
+            <div class="ai-icon">🤖</div>
+            <div class="ai-title">AI 智能助手</div>
+        </div>
+        <div class="ai-desc">
+            7×24小时在线 · 智能问答服务<br>
+            <span style="color: #00d4ff;">输入您的问题，获取专业解答 →</span>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item active">
+            <span class="icon">🏠</span>
+            <span>首页</span>
+        </a>
+        <a href="pages/talent.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>人才</span>
+        </a>
+        <a href="pages/training.html" class="nav-item">
+            <span class="icon">📚</span>
+            <span>培训</span>
+        </a>
+        <a href="pages/marketing.html" class="nav-item">
+            <span class="icon">📣</span>
+            <span>获客</span>
+        </a>
+        <a href="pages/supply.html" class="nav-item">
+            <span class="icon">🛒</span>
+            <span>集采</span>
+        </a>
+    </nav>
+
+    <script>
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent =
+                now.getHours().toString().padStart(2, '0') + ':' +
+                now.getMinutes().toString().padStart(2, '0');
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

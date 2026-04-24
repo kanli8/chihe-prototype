@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 活泼年轻 - 齿合平台</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+            background: linear-gradient(180deg, #fff9f5 0%, #fff 100%);
+            color: #333;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .header {
+            padding: 15px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .actions {
+            display: flex;
+            gap: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* 欢迎气泡 */
+        .welcome-bubble {
+            margin: 10px 18px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .welcome-bubble::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+        }
+        .welcome-bubble h2 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            position: relative;
+        }
+        .welcome-bubble p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        .welcome-bubble .emoji-bg {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        /* 用户卡片 */
+        .user-card {
+            margin: 15px 18px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.1);
+        }
+        .user-card .avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffa500, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        .user-card .info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .user-card .info p { font-size: 0.85rem; color: #999; }
+        .user-card .arrow {
+            margin-left: auto;
+            color: #ff6b6b;
+            font-size: 1.3rem;
+        }
+
+        /* 快捷气泡 */
+        .quick-bubbles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 18px;
+        }
+        .bubble-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .bubble-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .bubble-item .icon {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 8px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .bubble-item span { font-size: 0.8rem; color: #666; }
+
+        /* 模块卡片 */
+        .module-cards {
+            margin: 20px 18px;
+        }
+        .module-cards h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .module-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .module-card:hover { transform: scale(1.01); }
+        .module-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .module-card .text { flex: 1; }
+        .module-card .text h4 { font-size: 1rem; margin-bottom: 4px; }
+        .module-card .text p { font-size: 0.8rem; color: #999; }
+        .module-card .arrow {
+            color: #ccc;
+            font-size: 1.3rem;
+        }
+
+        /* AI卡片 */
+        .ai-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 18px;
+        }
+        .ai-mini-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 18px;
+            padding: 18px 15px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .ai-mini-card.second {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .ai-mini-card .ai-icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .ai-mini-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+        .ai-mini-card p { font-size: 0.75rem; opacity: 0.9; }
+
+        /* 待办 */
+        .todo-section {
+            margin: 20px 18px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .todo-section h3 {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+        .todo-item:last-child { border-bottom: none; }
+        .todo-item .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .todo-item .dot.red { background: #ff6b6b; }
+        .todo-item .dot.orange { background: #ffa500; }
+        .todo-item .dot.green { background: #52c41a; }
+        .todo-item .text { flex: 1; font-size: 0.9rem; }
+        .todo-item .count {
+            padding: 3px 10px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        /* 底部留白 */
+        .bottom-space { height: 90px; }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="logo">🦷 齿合</div>
+        <div class="actions">
+            <span>🔔</span>
+            <span>👤</span>
+        </div>
+    </header>
+
+    <!-- 欢迎气泡 -->
+    <div class="welcome-bubble">
+        <h2>你好呀~ 👋</h2>
+        <p>今天有 3 条待跟进线索</p>
+        <div class="emoji-bg">✨</div>
+    </div>
+
+    <!-- 用户卡片 -->
+    <div class="user-card">
+        <div class="avatar">🏥</div>
+        <div class="info">
+            <h3>口腔门诊</h3>
+            <p>管理者 · 已认证</p>
+        </div>
+        <div class="arrow">›</div>
+    </div>
+
+    <!-- 快捷气泡 -->
+    <div class="quick-bubbles">
+        <div class="bubble-item" onclick="location.href='pages/talent.html'">
+            <div class="icon" style="background: rgba(82, 196, 26, 0.15);">👥</div>
+            <span>人才</span>
+        </div>
+        <div class="bubble-item" onclick="location.href='pages/training.html'">
+            <div class="icon" style="background: rgba(250, 173, 20, 0.15);">🎓</div>
+            <span>培训</span>
+        </div>
+        <div class="bubble-item" onclick="location.href='pages/marketing.html'">
+            <div class="icon" style="background: rgba(255, 77, 79, 0.15);">📣</div>
+            <span>获客</span>
+        </div>
+        <div class="bubble-item" onclick="location.href='pages/supply.html'">
+            <div class="icon" style="background: rgba(144, 103, 255, 0.15);">🛒</div>
+            <span>集采</span>
+        </div>
+    </div>
+
+    <!-- 功能模块 -->
+    <section class="module-cards">
+        <h3>🌟 核心模块</h3>
+
+        <div class="module-card" onclick="location.href='pages/talent.html'">
+            <div class="icon" style="background: rgba(82, 196, 26, 0.15);">👥</div>
+            <div class="text">
+                <h4>人才市场</h4>
+                <p>招聘人才 · 求职找工作</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/training.html'">
+            <div class="icon" style="background: rgba(250, 173, 20, 0.15);">🎓</div>
+            <div class="text">
+                <h4>培训学院</h4>
+                <p>医疗技术 · 经营管理</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/marketing.html'">
+            <div class="icon" style="background: rgba(255, 77, 79, 0.15);">📣</div>
+            <div class="text">
+                <h4>智能获客</h4>
+                <p>营销活动 · 线索收集</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="module-card" onclick="location.href='pages/expert.html'">
+            <div class="icon" style="background: rgba(144, 103, 255, 0.15);">🏆</div>
+            <div class="text">
+                <h4>专家预约</h4>
+                <p>预约名医 · 技术支持</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+    </section>
+
+    <!-- AI卡片 -->
+    <div class="ai-cards">
+        <div class="ai-mini-card" onclick="location.href='pages/ai-xiaochi.html'">
+            <div class="ai-icon">💬</div>
+            <h4>AI小齿</h4>
+            <p>7×24智能客服</p>
+        </div>
+        <div class="ai-mini-card second" onclick="location.href='pages/ai-yixiaobao.html'">
+            <div class="ai-icon">📋</div>
+            <h4>AI医小宝</h4>
+            <p>医保合规顾问</p>
+        </div>
+    </div>
+
+    <!-- 待办事项 -->
+    <div class="todo-section">
+        <h3>📋 待办事项</h3>
+        <div class="todo-item">
+            <span class="dot red"></span>
+            <span class="text">您有 3 条新线索待跟进</span>
+            <span class="count">3</span>
+        </div>
+        <div class="todo-item">
+            <span class="dot orange"></span>
+            <span class="text">2 个面试邀约待确认</span>
+            <span class="count">2</span>
+        </div>
+        <div class="todo-item">
+            <span class="dot green"></span>
+            <span class="text">新订单待发货</span>
+            <span class="count">5</span>
+        </div>
+    </div>
+
+    <div class="bottom-space"></div>
+</body>
+</html>

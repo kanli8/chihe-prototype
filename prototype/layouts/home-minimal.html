@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 简约现代 - 齿合平台</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 空白导航 */
+        .space-nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .space-nav .logo {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .space-nav .menu {
+            width: 28px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .space-nav .menu span {
+            display: block;
+            height: 2px;
+            background: #1a1a1a;
+            border-radius: 1px;
+        }
+
+        /* 大标题区 */
+        .hero-section {
+            padding: 60px 25px 40px;
+        }
+        .hero-section h1 {
+            font-size: 2rem;
+            font-weight: 200;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+        .hero-section h1 strong {
+            font-weight: 600;
+        }
+        .hero-section p {
+            font-size: 0.95rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* 用户信息 */
+        .user-row {
+            padding: 0 25px;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .user-row .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .user-row .info h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        .user-row .info p {
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+
+        /* 统计卡片 */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #f0f0f0;
+            margin: 0 25px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .stat-item {
+            background: #fff;
+            padding: 20px 15px;
+            text-align: center;
+        }
+        .stat-item .num {
+            font-size: 1.8rem;
+            font-weight: 200;
+            color: #1a1a1a;
+        }
+        .stat-item .label {
+            font-size: 0.75rem;
+            color: #bbb;
+            margin-top: 5px;
+        }
+
+        /* 功能列表 */
+        .feature-section {
+            padding: 40px 25px;
+        }
+        .feature-section h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+        }
+        .feature-item:last-child { border-bottom: none; }
+        .feature-item .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .feature-item .text { flex: 1; }
+        .feature-item .text h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 3px; }
+        .feature-item .text p { font-size: 0.8rem; color: #ccc; }
+        .feature-item .arrow {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        /* AI入口 */
+        .ai-section {
+            margin: 0 25px 40px;
+            padding: 25px;
+            background: #fafafa;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+        .ai-section .ai-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .ai-section .ai-icon {
+            font-size: 1.3rem;
+        }
+        .ai-section h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .ai-section p {
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+
+        /* 底部留白 */
+        .bottom-space {
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="space-nav">
+        <div class="logo">🦷 齿合</div>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- 大标题 -->
+    <section class="hero-section">
+        <h1>一站式口腔<br><strong>产业赋能平台</strong></h1>
+        <p>人才培训 · 智能获客 · 供应链集采<br>专家预约 · 加盟赋能</p>
+    </section>
+
+    <!-- 用户信息 -->
+    <div class="user-row">
+        <div class="avatar">🏥</div>
+        <div class="info">
+            <h3>口腔门诊</h3>
+            <p>已认证医疗机构</p>
+        </div>
+    </div>
+
+    <!-- 统计数据 -->
+    <div class="stats-row">
+        <div class="stat-item">
+            <div class="num">89</div>
+            <div class="label">简历投递</div>
+        </div>
+        <div class="stat-item">
+            <div class="num">128</div>
+            <div class="label">学习人次</div>
+        </div>
+        <div class="stat-item">
+            <div class="num">3</div>
+            <div class="label">待办事项</div>
+        </div>
+    </div>
+
+    <!-- 功能模块 -->
+    <section class="feature-section">
+        <h2>功能模块</h2>
+
+        <div class="feature-item" onclick="location.href='pages/talent.html'">
+            <div class="icon" style="background: #f0fdf4;">👥</div>
+            <div class="text">
+                <h4>人才市场</h4>
+                <p>招聘人才 · 求职找工作</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="feature-item" onclick="location.href='pages/training.html'">
+            <div class="icon" style="background: #eff6ff;">🎓</div>
+            <div class="text">
+                <h4>培训学院</h4>
+                <p>医疗技术 · 经营管理</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="feature-item" onclick="location.href='pages/marketing.html'">
+            <div class="icon" style="background: #fffbeb;">📣</div>
+            <div class="text">
+                <h4>智能获客</h4>
+                <p>营销活动 · 线索管理</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="feature-item" onclick="location.href='pages/supply.html'">
+            <div class="icon" style="background: #fdf2f8;">🛒</div>
+            <div class="text">
+                <h4>供应链集采</h4>
+                <p>器械耗材 · 设备采购</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="feature-item" onclick="location.href='pages/expert.html'">
+            <div class="icon" style="background: #faf5ff;">🏆</div>
+            <div class="text">
+                <h4>专家预约</h4>
+                <p>预约名医 · 技术支持</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+
+        <div class="feature-item" onclick="location.href='pages/franchise.html'">
+            <div class="icon" style="background: #ecfeff;">🔐</div>
+            <div class="text">
+                <h4>加盟赋能</h4>
+                <p>轻加盟 · 事业伙伴</p>
+            </div>
+            <span class="arrow">›</span>
+        </div>
+    </section>
+
+    <!-- AI入口 -->
+    <div class="ai-section" onclick="location.href='pages/ai-xiaochi.html'">
+        <div class="ai-top">
+            <span class="ai-icon">🤖</span>
+            <h4>AI 智能助手</h4>
+        </div>
+        <p>7×24小时在线 · 随时为您服务</p>
+    </div>
+
+    <div class="bottom-space"></div>
+</body>
+</html>

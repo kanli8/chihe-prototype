@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>培训学院 - 科技风格 - 齿合平台</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            margin: 0 auto;
+        }
+
+        .top-line {
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7b2dff, #ff2d55, #00d4ff);
+            background-size: 300% 100%;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        .page-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .page-header .back {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        .page-header h1 {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #00d4ff, #7b2dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Banner */
+        .tech-banner {
+            margin: 15px 20px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 45, 255, 0.15));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent);
+            border-radius: 50%;
+        }
+        .tech-banner h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .tech-banner p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            position: relative;
+        }
+
+        /* 标签 */
+        .filter-tags {
+            display: flex;
+            gap: 10px;
+            padding: 0 20px 15px;
+            overflow-x: auto;
+        }
+        .filter-tag {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .filter-tag.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(123, 45, 255, 0.3));
+            border-color: rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
+        }
+
+        /* 课程卡片 */
+        .course-list {
+            padding: 0 20px 20px;
+        }
+        .course-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .course-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .course-cover {
+            height: 140px;
+            background: linear-gradient(135deg, #00d4ff, #7b2dff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+        }
+        .course-cover.two { background: linear-gradient(135deg, #ff2d55, #ff6b35); }
+        .course-cover.three { background: linear-gradient(135deg, #52c41a, #237804); }
+        .course-cover .duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 4px 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .course-info {
+            padding: 15px;
+        }
+        .course-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
+        }
+        .course-progress {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .course-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7b2dff);
+            border-radius: 2px;
+        }
+
+        /* 底部导航 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 25px;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+        .bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.65rem;
+        }
+        .bottom-nav .nav-item.active { color: #00d4ff; }
+        .bottom-nav .nav-item .icon { font-size: 1.3rem; }
+    </style>
+</head>
+<body>
+    <div class="top-line"></div>
+
+    <header class="page-header">
+        <a href="home-tech.html" class="back">‹</a>
+        <h1>TRAINING ACADEMY</h1>
+    </header>
+
+    <div class="tech-banner">
+        <h3>🎓 学习中心</h3>
+        <p>医疗技术 · 经营管理 · 医保合规</p>
+    </div>
+
+    <div class="filter-tags">
+        <span class="filter-tag active">全部</span>
+        <span class="filter-tag">医疗技术</span>
+        <span class="filter-tag">经营管理</span>
+        <span class="filter-tag">医保合规</span>
+        <span class="filter-tag">营销获客</span>
+    </div>
+
+    <div class="course-list">
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover">
+                🎓
+                <span class="duration">3.5小时</span>
+            </div>
+            <div class="course-info">
+                <div class="course-title">口腔种植技术实战班</div>
+                <div class="course-meta">
+                    <span>李明华 教授</span>
+                    <span>128人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 65%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover two">
+                💰
+                <span class="duration">5小时</span>
+            </div>
+            <div class="course-info">
+                <div class="course-title">门诊业绩增长训练营</div>
+                <div class="course-meta">
+                    <span>张伟 总监</span>
+                    <span>256人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 30%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover three">
+                📋
+                <span class="duration">2小时</span>
+            </div>
+            <div class="course-info">
+                <div class="course-title">医保合规与DIP/DRG改革</div>
+                <div class="course-meta">
+                    <span>王芳 主任</span>
+                    <span>89人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="location.href='training-detail.html'">
+            <div class="course-cover">
+                🔧
+                <span class="duration">4小时</span>
+            </div>
+            <div class="course-info">
+                <div class="course-title">根管治疗规范化操作</div>
+                <div class="course-meta">
+                    <span>陈刚 博士</span>
+                    <span>167人学习</span>
+                </div>
+                <div class="course-progress">
+                    <div class="course-progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 90px;"></div>
+
+    <nav class="bottom-nav">
+        <a href="home-tech.html" class="nav-item">
+            <span class="icon">🏠</span>
+            <span>首页</span>
+        </a>
+        <a href="talent.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>人才</span>
+        </a>
+        <a href="training.html" class="nav-item active">
+            <span class="icon">📚</span>
+            <span>培训</span>
+        </a>
+        <a href="marketing.html" class="nav-item">
+            <span class="icon">📣</span>
+            <span>获客</span>
+        </a>
+        <a href="supply.html" class="nav-item">
+            <span class="icon">🛒</span>
+            <span>集采</span>
+        </a>
+    </nav>
+</body>
+</html>
