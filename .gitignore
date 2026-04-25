@@ -1,0 +1,14 @@
+# 排除文档目录
+../docs/
+../backlog/
+../requirement_card/
+../test_report/
+*.docx
+*.zip
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
