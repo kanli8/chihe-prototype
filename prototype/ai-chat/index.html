@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 口腔门诊智能坐席 - Demo</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部导航 -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <span class="logo-text">AI 智能坐席</span>
+                </div>
+                <span class="header-badge">口腔门诊 Demo</span>
+            </div>
+            <div class="header-right">
+                <button class="theme-btn" onclick="toggleTheme()" title="切换主题">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="app-main">
+            <!-- 左侧控制面板 -->
+            <aside class="control-panel">
+                <!-- 知识库配置 -->
+                <section class="panel-section">
+                    <div class="section-header" onclick="toggleSection('knowledge')">
+                        <span class="section-icon">📚</span>
+                        <h3>知识库配置</h3>
+                        <span class="section-arrow">▼</span>
+                    </div>
+                    <div class="section-content" id="knowledgeSection">
+                        <div class="config-item">
+                            <label>知识库开关</label>
+                            <label class="switch">
+                                <input type="checkbox" id="kbEnabled" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="config-item">
+                            <button class="btn btn-secondary" onclick="uploadDocument()">
+                                <span>📄</span> 上传文档
+                            </button>
+                            <button class="btn btn-secondary" onclick="showTemplates()">
+                                <span>📝</span> 问答模板
+                            </button>
+                        </div>
+                        <div class="config-item">
+                            <label>已上传文档</label>
+                            <div class="file-list" id="fileList">
+                                <div class="file-item">
+                                    <span>📄</span>
+                                    <span>口腔基础知识库.txt</span>
+                                    <button class="btn-icon" onclick="removeFile(this)">×</button>
+                                </div>
+                                <div class="file-item">
+                                    <span>📄</span>
+                                    <span>术后护理指南.md</span>
+                                    <button class="btn-icon" onclick="removeFile(this)">×</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 触发规则配置 -->
+                <section class="panel-section">
+                    <div class="section-header" onclick="toggleSection('trigger')">
+                        <span class="section-icon">⚙️</span>
+                        <h3>触发规则</h3>
+                        <span class="section-arrow">▼</span>
+                    </div>
+                    <div class="section-content" id="triggerSection">
+                        <div class="trigger-item">
+                            <div class="trigger-header">
+                                <span class="trigger-name">术后回访</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="trigger-config">
+                                <div class="config-row">
+                                    <label>触发事件</label>
+                                    <select>
+                                        <option value="treatment_done" selected>治疗完成</option>
+                                        <option value="appointment">预约确认</option>
+                                        <option value="inquiry">咨询未回复</option>
+                                    </select>
+                                </div>
+                                <div class="config-row">
+                                    <label>延迟时间</label>
+                                    <select>
+                                        <option value="24">24 小时</option>
+                                        <option value="48" selected>48 小时</option>
+                                        <option value="72">72 小时</option>
+                                    </select>
+                                </div>
+                                <div class="config-row">
+                                    <label>消息模板</label>
+                                    <select>
+                                        <option value="followup" selected>术后回访问候</option>
+                                        <option value="reminder">预约提醒</option>
+                                        <option value="custom">自定义</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trigger-item">
+                            <div class="trigger-header">
+                                <span class="trigger-name">预约提醒</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="trigger-config">
+                                <div class="config-row">
+                                    <label>触发事件</label>
+                                    <select>
+                                        <option value="appointment" selected>预约确认</option>
+                                        <option value="treatment_done">治疗完成</option>
+                                        <option value="inquiry">咨询未回复</option>
+                                    </select>
+                                </div>
+                                <div class="config-row">
+                                    <label>提前提醒</label>
+                                    <select>
+                                        <option value="1">1 小时</option>
+                                        <option value="24" selected>24 小时</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" onclick="addTriggerRule()">
+                            <span>+</span> 添加规则
+                        </button>
+                    </div>
+                </section>
+
+                <!-- 任务日志 -->
+                <section class="panel-section">
+                    <div class="section-header" onclick="toggleSection('logs')">
+                        <span class="section-icon">📊</span>
+                        <h3>自动任务日志</h3>
+                        <span class="section-arrow">▼</span>
+                    </div>
+                    <div class="section-content" id="logsSection">
+                        <div class="log-list" id="logList">
+                            <div class="log-item">
+                                <span class="log-time">10:30</span>
+                                <span class="log-status success">✓</span>
+                                <span class="log-text">已发送回访消息 → 张先生</span>
+                            </div>
+                            <div class="log-item">
+                                <span class="log-time">09:15</span>
+                                <span class="log-status success">✓</span>
+                                <span class="log-text">已发送预约提醒 → 李女士</span>
+                            </div>
+                            <div class="log-item">
+                                <span class="log-time">08:00</span>
+                                <span class="log-status pending">⏳</span>
+                                <span class="log-text">等待触发 → 王先生 (24小时后)</span>
+                            </div>
+                            <div class="log-item">
+                                <span class="log-time">昨天</span>
+                                <span class="log-status success">✓</span>
+                                <span class="log-text">回访完成 → 赵女士</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 患者列表 -->
+                <section class="panel-section">
+                    <div class="section-header" onclick="toggleSection('patients')">
+                        <span class="section-icon">👥</span>
+                        <h3>患者列表</h3>
+                        <span class="section-arrow">▼</span>
+                    </div>
+                    <div class="section-content" id="patientsSection">
+                        <div class="patient-list" id="patientList">
+                            <div class="patient-item active" onclick="selectPatient(0)">
+                                <div class="patient-avatar">张</div>
+                                <div class="patient-info">
+                                    <div class="patient-name">张先生</div>
+                                    <div class="patient-status waiting">待回访</div>
+                                </div>
+                                <div class="patient-time">24h后</div>
+                            </div>
+                            <div class="patient-item" onclick="selectPatient(1)">
+                                <div class="patient-avatar success">李</div>
+                                <div class="patient-info">
+                                    <div class="patient-name">李女士</div>
+                                    <div class="patient-status done">已完成</div>
+                                </div>
+                                <div class="patient-time">昨天</div>
+                            </div>
+                            <div class="patient-item" onclick="selectPatient(2)">
+                                <div class="patient-avatar warning">王</div>
+                                <div class="patient-info">
+                                    <div class="patient-name">王先生</div>
+                                    <div class="patient-status pending">跟进中</div>
+                                </div>
+                                <div class="patient-time">2h前</div>
+                            </div>
+                            <div class="patient-item" onclick="selectPatient(3)">
+                                <div class="patient-avatar">赵</div>
+                                <div class="patient-info">
+                                    <div class="patient-name">赵先生</div>
+                                    <div class="patient-status waiting">待回访</div>
+                                </div>
+                                <div class="patient-time">48h后</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- 右侧对话窗口 -->
+            <section class="chat-panel">
+                <!-- 患者信息头部 -->
+                <div class="chat-header">
+                    <div class="patient-header-info">
+                        <div class="patient-avatar-lg" id="currentPatientAvatar">张</div>
+                        <div class="patient-header-text">
+                            <div class="patient-header-name" id="currentPatientName">张先生</div>
+                            <div class="patient-header-meta" id="currentPatientMeta">预约：种植牙 | 医生：李主任</div>
+                        </div>
+                    </div>
+                    <div class="patient-header-actions">
+                        <button class="btn btn-primary" onclick="triggerAutoMessage()">
+                            <span>▶</span> 触发自动消息
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 消息区域 -->
+                <div class="chat-messages" id="chatMessages"></div>
+
+                <!-- 快捷问题 -->
+                <div class="quick-questions">
+                    <span class="quick-label">快捷问题：</span>
+                    <div class="quick-btns">
+                        <button class="quick-btn" onclick="sendQuickQuestion('肿痛怎么办？')">肿痛怎么办？</button>
+                        <button class="quick-btn" onclick="sendQuickQuestion('多久可以吃东西？')">多久可以吃东西？</button>
+                        <button class="quick-btn" onclick="sendQuickQuestion('如何清洁口腔？')">如何清洁口腔？</button>
+                        <button class="quick-btn" onclick="sendQuickQuestion('预约复诊')">预约复诊</button>
+                    </div>
+                </div>
+
+                <!-- 输入区域 -->
+                <div class="chat-input-area">
+                    <div class="input-wrapper">
+                        <textarea id="userInput" placeholder="输入您的问题..." rows="1" onkeydown="handleKeyDown(event)" oninput="autoResize(this)"></textarea>
+                        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                            <span>➤</span>
+                        </button>
+                    </div>
+                    <div class="input-hint">
+                        <span class="hint-icon">💡</span>
+                        <span>AI 将根据知识库自动回答您的问题</span>
+                    </div>
+                </div>
+
+                <!-- API Key 配置 (默认隐藏) -->
+                <div class="api-key-bar" style="display: none;">
+                    <div class="api-key-config">
+                        <div class="api-key-input">
+                            <label>Base URL:</label>
+                            <input type="text" id="baseUrl" value="https://api.vveai.com" placeholder="https://api.openai.com">
+                        </div>
+                        <div class="api-key-input">
+                            <label>API Key:</label>
+                            <input type="password" id="apiKey" value="sk-EoeYUSLSxGfNcGSS4d04Bc0c6e5f46Ce9138E28eAf009503" placeholder="sk-..." autocomplete="off">
+                            <span class="status-dot connected" id="statusDot"></span>
+                            <button class="btn btn-small" onclick="saveApiKey()">保存</button>
+                        </div>
+                        <div class="api-key-input">
+                            <label>Model:</label>
+                            <select id="modelSelect">
+                                <option value="gpt-4o-mini">GPT-4o Mini</option>
+                                <option value="gpt-4o">GPT-4o</option>
+                                <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                                <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 模态框：上传文档 -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>上传知识库文档</h3>
+                <button class="modal-close" onclick="closeModal('uploadModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" accept=".txt,.md" style="display:none" onchange="handleFileUpload(this)">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">点击选择文件或拖拽到此处</div>
+                    <div class="upload-hint">支持 .txt, .md 格式</div>
+                </div>
+                <div class="upload-preview" id="uploadPreview"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('uploadModal')">取消</button>
+                <button class="btn btn-primary" onclick="confirmUpload()">确认上传</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框：问答模板 -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>问答模板配置</h3>
+                <button class="modal-close" onclick="closeModal('templateModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="template-list">
+                    <div class="template-item">
+                        <div class="template-q">Q: 种植牙手术后要注意什么？</div>
+                        <div class="template-a">A: 术后24小时不要刷牙漱口，避免剧烈运动...</div>
+                    </div>
+                    <div class="template-item">
+                        <div class="template-q">Q: 肿痛正常吗？</div>
+                        <div class="template-a">A: 轻微肿胀属于正常现象，通常3-5天消退...</div>
+                    </div>
+                    <div class="template-item">
+                        <div class="template-q">Q: 多久可以复诊？</div>
+                        <div class="template-a">A: 一般术后7-10天需要复诊拆线...</div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-block" onclick="addTemplate()">
+                    <span>+</span> 添加模板
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑患者弹窗 -->
+    <div id="patientEditModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>编辑患者信息</h3>
+                <button class="modal-close" onclick="closePatientEdit()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="patientEditForm">
+                    <input type="hidden" id="editPatientIndex">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" id="editName" class="form-input" placeholder="如：张先生">
+                    </div>
+                    <div class="form-group">
+                        <label>预约项目</label>
+                        <input type="text" id="editAppointment" class="form-input" placeholder="如：种植牙">
+                    </div>
+                    <div class="form-group">
+                        <label>主治医生</label>
+                        <input type="text" id="editDoctor" class="form-input" placeholder="如：李主任">
+                    </div>
+                    <div class="form-group">
+                        <label>基本信息</label>
+                        <textarea id="editBasicInfo" class="form-input" rows="2" placeholder="如：男，45岁，企业家，有高血压病史"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>就诊记录</label>
+                        <textarea id="editMedicalHistory" class="form-input" rows="3" placeholder="如：2024年3月种植牙手术；慢性牙周炎治疗"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>个人喜好</label>
+                        <textarea id="editPreferences" class="form-input" rows="2" placeholder="如：喜欢简洁直接的沟通方式，对疼痛敏感"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closePatientEdit()">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="savePatientEdit()">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/knowledge-base.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
